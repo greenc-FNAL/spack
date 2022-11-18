@@ -23,7 +23,7 @@ import spack.config
         (["invalid-github-patch-url"], ["PKG-DIRECTIVES", "PKG-PROPERTIES"]),
         # This package has a stand-alone 'test' method in build-time callbacks
         (["fail-test-audit"], ["PKG-DIRECTIVES", "PKG-PROPERTIES"]),
-        # This package's builder has a stand-alone 'test' method in install-time callbacks
+        # This package's builder has a stand-alone 'test' method in build-time callbacks
         (["fail-test-audit-in-builder"], ["PKG-DIRECTIVES", "PKG-PROPERTIES"]),
         # This package has no issues
         (["mpileaks"], None),

@@ -18,7 +18,7 @@ class FailTestAuditInBuilder(MakefilePackage):
 
 class MakefileBuilder(spack.build_systems.makefile.MakefileBuilder):
 
-    install_time_test_callbacks = ["test"]
+    build_time_test_callbacks = ["test"]
 
     def test(self):
         print("test: test-install-callbacks")

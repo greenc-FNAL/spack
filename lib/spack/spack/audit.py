@@ -282,28 +282,27 @@ package_https_directives = AuditClass(
 
 
 @package_directives
-def _check_test_callbacks(pkgs, error_cls):
-    """Ensure stand-alone test method is not included in test callbacks."""
+def _check_build_test_callbacks(pkgs, error_cls):
+    """Ensure stand-alone test method is not included in build-time test callbacks."""
     errors = []
-    test_methods_lists = ("build_time_test_callbacks", "install_time_test_callbacks")
+    methods_list = "build_time_test_callbacks"
     for pkg_name in pkgs:
         pkg_cls = spack.repo.path.get_pkg_class(pkg_name)
         module = pkg_cls.module
-        for methods_list in test_methods_lists:
-            if "test" in getattr(pkg_cls, methods_list, ()):
-                msg = "{pkg} package contains 'test' method in {methods_list}"
-                instr = "Remove 'test' from {methods_list} in {pkg_cls}"
-                errors.append(
-                    error_cls(
-                        msg.format(pkg=pkg_name, methods_list=methods_list),
-                        [
-                            instr.format(
-                                methods_list=methods_list,
-                                pkg_cls=".".join([module.__name__, pkg_cls.__name__]),
-                            )
-                        ],
-                    )
+        if "test" in getattr(pkg_cls, methods_list, ()):
+            msg = "{pkg} package contains 'test' method in {methods_list}"
+            instr = "Remove 'test' from {methods_list} in {pkg_cls}"
+            errors.append(
+                error_cls(
+                    msg.format(pkg=pkg_name, methods_list=methods_list),
+                    [
+                        instr.format(
+                            methods_list=methods_list,
+                            pkg_cls=".".join([module.__name__, pkg_cls.__name__]),
+                        )
+                    ],
                 )
+            )
 
         buildsystem_variant, _ = pkg_cls.variants["build_system"]
         buildsystem_names = [getattr(x, "value", x) for x in buildsystem_variant.values]
@@ -312,28 +311,27 @@ def _check_test_callbacks(pkgs, error_cls):
             builder_cls = getattr(module, builder_cls_name, False)
             if not builder_cls:
                 continue
-            for methods_list in test_methods_lists:
-                if "test" in getattr(builder_cls, methods_list, ()):
-                    msg = (
-                        "{pkg} package's '{builder_cls}' builder class"
-                        " contains 'test' method in {methods_list}"
-                    )
-                    instr = "Remove 'test' from {methods_list} in {builder_cls}"
-                    errors.append(
-                        error_cls(
-                            msg.format(
-                                pkg=pkg_name,
-                                builder_cls=builder_cls_name,
+            if "test" in getattr(builder_cls, methods_list, ()):
+                msg = (
+                    "{pkg} package's '{builder_cls}' builder class"
+                    " contains 'test' method in {methods_list}"
+                )
+                instr = "Remove 'test' from {methods_list} in {builder_cls}"
+                errors.append(
+                    error_cls(
+                        msg.format(
+                            pkg=pkg_name,
+                            builder_cls=builder_cls_name,
+                            methods_list=methods_list,
+                        ),
+                        [
+                            instr.format(
                                 methods_list=methods_list,
-                            ),
-                            [
-                                instr.format(
-                                    methods_list=methods_list,
-                                    builder_cls=".".join([module.__name__, builder_cls_name]),
-                                )
-                            ],
-                        )
+                                builder_cls=".".join([module.__name__, builder_cls_name]),
+                            )
+                        ],
                     )
+                )
     return errors
 
 
