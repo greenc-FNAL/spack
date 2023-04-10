@@ -653,7 +653,9 @@ class Root(CMakePackage):
         # Cleanup.
         self.sanitize_environments(env)
 
-    def setup_dependent_build_environment(self, env: spack.util.environment.EnvironmentModifications, dependent_spec):
+    def setup_dependent_build_environment(
+        self, env: spack.util.environment.EnvironmentModifications, dependent_spec
+    ):
         env.set("ROOTSYS", self.prefix)
         env.set("ROOT_VERSION", "v{0}".format(self.version.up_to(1)))
         env.prepend_path("PYTHONPATH", self.prefix.lib.root)
@@ -668,7 +670,9 @@ class Root(CMakePackage):
         # Cleanup.
         self.sanitize_environments(env)
 
-    def setup_dependent_run_environment(self, env: spack.util.environment.EnvironmentModifications, dependent_spec):
+    def setup_dependent_run_environment(
+        self, env: spack.util.environment.EnvironmentModifications, dependent_spec
+    ):
         env.set("ROOTSYS", self.prefix)
         env.set("ROOT_VERSION", "v{0}".format(self.version.up_to(1)))
         env.prepend_path("PYTHONPATH", self.prefix.lib.root)
@@ -681,7 +685,7 @@ class Root(CMakePackage):
 
     def sanitize_environments(self, env: spack.util.environment.EnvironmentModifications, *vars):
         target = self.spec.target
-        special_separators = { "LDSHARED": " -L" }
+        special_separators = {"LDSHARED": " -L"}
         if not vars:
             vars = (
                 "PATH",
@@ -697,7 +701,7 @@ class Root(CMakePackage):
             if var in special_separators:
                 kwargs["separator"] = special_separators[var]
             env.prune_duplicate_paths(var, **kwargs)
-            if (var == "PATH"):
+            if var == "PATH":
                 env.deprioritize_system_paths(var, target=target, **kwargs)
             else:
                 env.remove_system_paths(var, **kwargs)
