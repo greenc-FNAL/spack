@@ -525,8 +525,33 @@ def conflicts(conflict_spec, when=None, msg=None):
     return _execute_conflicts
 
 
+def version_constraint_generator(version_translator=Version):
+    """Generate conditional constraints based on parent package versions.
+
+    Args:
+        version_translator: this function will be called for each version defined
+            for pkg, and any non-vacuous result will be used to add a dependency with
+            that result as a version constraint on the spec provided to depends_on().
+            If not specified, Version() will be used as the translator function.
+
+        Example function: ``lambda v: v.up_to(2)`` (minor version match)
+    """
+
+    def _execute_version_constraint_generator(pkg):
+        if version_translator:
+            # Produce a different dependency for every package version
+            # for which version_translator returns an answer that alters
+            # the spec.
+            for pkg_version in pkg.versions:
+                version_ish = version_translator(pkg_version)
+                if version_ish is not None:
+                    yield {"dep_spec": f"@{version_ish}", "dep_when": f"@{pkg_version}"}
+
+    return _execute_version_constraint_generator
+
+
 @directive(("dependencies"))
-def depends_on(spec, when=None, type=default_deptype, patches=None, version_translator=None):
+def depends_on(spec, when=None, type=default_deptype, patches=None, constraint_generator=None):
     """Creates a dict of deps with specs defining when they apply.
 
     Args:
@@ -536,12 +561,13 @@ def depends_on(spec, when=None, type=default_deptype, patches=None, version_tran
         type (str or tuple): str or tuple of legal Spack deptypes
         patches (typing.Callable or list): single result of ``patch()`` directive, a
             ``str`` to be passed to ``patch``, or a list of these
-        version_translator (function): function to generate a version-ish for spec
-            from a parent version. If provided, this function will be called for
-            each version defined for pkg, and any non-vacuous result will be used to
-            add a dependency with that version as an extra constraint on spec.
-            Examples of suitable functions: ``spack.version.Version`` (NOP) or
-            ``lambda v: v.up_to(2)`` (minor version match)
+        constraint_generator: A function which returns an iterable of zero or more
+            dictionaries with keys:
+                dep_spec (required): Anonymous spec to be used to constrain ``spec``
+                dep_when (optional): A conditional to be added to ``when``
+            For each returned dictionary resulting in a non-trivial constraint on
+            ``spec``, a dependency is generated. If there are none, then a single
+            dependency will be generated as if constraint_generator were not specified.
 
     This directive is to be used inside a Package definition to declare
     that the package requires other packages to be built first.
@@ -551,25 +577,20 @@ def depends_on(spec, when=None, type=default_deptype, patches=None, version_tran
 
     def _execute_depends_on(pkg):
         executed = False
-        if version_translator:
-            # Produce a different dependency for every package version
-            # for which version_translator returns an answer that alters
-            # the spec.
-            for pkg_version in pkg.versions:
-                version_ish = version_translator(pkg_version)
-                if version_ish is not None:
-                    constrained_spec = spack.spec.Spec(spec)
-                    if constrained_spec.constrain(f"@{version_ish}"):
-                        pkg_depends_on(
-                            pkg,
-                            constrained_spec,
-                            when=f"@{pkg_version} {when}" if when else f"@{pkg_version}",
-                            type=type,
-                            patches=patches
-                        )
+        if constraint_generator:
+            for conditional_constraint in constraint_generator(pkg):
+                if conditional_constraint and conditional_constraint.has_key("dep_spec"):
+                    dep_when = (
+                        f'{conditional_constraint["dep_when"]} {when}'
+                        if conditional_constraint.has_key("dep_when")
+                        else when
+                    )
+                    dep_spec = spack.spec.Spec(spec)
+                    if dep_spec.constrain(conditional_constraint["dep_spec"]):
+                        pkg_depends_on(pkg, dep_spec, when=dep_when, type=type, patches=patches)
                         executed = True
 
-        # If we haven't already produced one or more version-specific
+        # If we haven't already produced one or more constrained
         # dependencies, do the basic dependency for spec.
         if not executed:
             pkg_depends_on(pkg, spec, when=when, type=type, patches=patches)
