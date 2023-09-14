@@ -166,7 +166,7 @@ def test_config_add_list(mutable_empty_config):
 def test_config_os_add_override(mutable_empty_config):
     host_platform = spack.platforms.real_host()
     oss = str(host_platform.operating_system("frontend"))
-    config("--scope", "site/%s" % oss, "add", "config:template_dirs:test1")
+    config("--scope", os.path.join("site", oss), "add", "config:template_dirs:test1")
     config("add", "config:template_dirs:[test2]")
     output = config("get", "config")
 
