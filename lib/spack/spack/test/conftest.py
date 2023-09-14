@@ -720,13 +720,13 @@ def configuration_dir(tmpdir_factory, linux_os):
 
 def _create_mock_configuration_scopes(configuration_dir):
     """Create the configuration scopes used in `config` and `mutable_config`."""
-    
+
     host_platform = spack.platforms.real_host()
     oss = str(host_platform.operating_system("frontend"))
     scopes = [spack.config.InternalConfigScope("_builtin", spack.config.CONFIG_DEFAULTS)]
     scopes += [
         spack.config.ConfigScope(name, str(configuration_dir.join(name)))
-        for name in ["site", "site/%s" % oss,  "system", "user"]
+        for name in ["site", "site/%s" % oss, "system", "user"]
     ]
     scopes += [spack.config.InternalConfigScope("command_line")]
     return scopes
@@ -764,7 +764,7 @@ def mutable_empty_config(tmpdir_factory, configuration_dir):
     mutable_dir = tmpdir_factory.mktemp("mutable_config").join("tmp")
     scopes = [
         spack.config.ConfigScope(name, str(mutable_dir.join(name)))
-        for name in ["site", "site/%s" % oss,  "system", "user"]
+        for name in ["site", "site/%s" % oss, "system", "user"]
     ]
 
     with spack.config.use_configuration(*scopes) as cfg:
