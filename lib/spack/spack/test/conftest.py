@@ -726,7 +726,7 @@ def _create_mock_configuration_scopes(configuration_dir):
     scopes = [spack.config.InternalConfigScope("_builtin", spack.config.CONFIG_DEFAULTS)]
     scopes += [
         spack.config.ConfigScope(name, str(configuration_dir.join(name)))
-        for name in ["site", os.path.join("site",oss), "system", "user"]
+        for name in ["site", os.path.join("site", oss), "system", "user"]
     ]
     scopes += [spack.config.InternalConfigScope("command_line")]
     return scopes
