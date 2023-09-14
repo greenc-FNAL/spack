@@ -13,6 +13,7 @@ import spack.config
 import spack.database
 import spack.environment as ev
 import spack.main
+import spack.platforms
 import spack.schema.config
 import spack.spec
 import spack.store
@@ -160,6 +161,35 @@ def test_config_add_list(mutable_empty_config):
   - test1
 """
     )
+
+def test_config_os_add_override(mutable_empty_config):
+    
+    host_platform = spack.platforms.real_host()
+    oss = str(host_platform.operating_system("frontend"))
+    config("--scope", "site/%s" % oss, "add", "config:template_dirs:test1")
+    config("add", "config:template_dirs:[test2]")
+    output = config("get", "config")
+
+    assert (
+        output
+        == """config:
+  template_dirs:
+  - test2
+  - test1
+"""
+    )
+
+    config("add", "config::template_dirs:[test2]")
+    output = config("get", "config")
+
+    assert (
+        output
+        == """config:
+  template_dirs:
+  - test2
+"""
+    )
+
 
 
 def test_config_add_override(mutable_empty_config):
