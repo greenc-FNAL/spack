@@ -19,38 +19,37 @@
 { attr("virtual_node", node(0..X-1, Package)) } :- max_dupes(Package, X), virtual(Package).
 
 % Integrity constraints on DAG nodes
-:- attr("root", PackageNode), not attr("node", PackageNode).
-:- attr("version", PackageNode), not attr("node", PackageNode).
-:- attr("node_version_satisfies", PackageNode), not attr("node", PackageNode).
-:- attr("hash", PackageNode, _), not attr("node", PackageNode).
-:- attr("node_platform", PackageNode, _), not attr("node", PackageNode).
-:- attr("node_os", PackageNode, _), not attr("node", PackageNode).
-:- attr("node_target", PackageNode, _), not attr("node", PackageNode).
-:- attr("node_compiler_version", PackageNode, _, _), not attr("node", PackageNode).
-:- attr("variant_value", PackageNode, _, _), not attr("node", PackageNode).
-:- attr("node_flag_compiler_default", PackageNode), not attr("node", PackageNode).
-:- attr("node_flag", PackageNode, _, _), not attr("node", PackageNode).
-:- attr("node_flag_source", PackageNode, _, _), not attr("node", PackageNode).
-:- attr("no_flags", PackageNode, _), not attr("node", PackageNode).
-:- attr("external_spec_selected", PackageNode, _), not attr("node", PackageNode).
-:- attr("depends_on", ParentNode, _, _), not attr("node", ParentNode).
-:- attr("depends_on", _, ChildNode, _), not attr("node", ChildNode).
-:- attr("node_flag_source", ParentNode, _, _), not attr("node", ParentNode).
-:- attr("node_flag_source", _, _, ChildNode), not attr("node", ChildNode).
+:- attr("root", PackageNode), not attr("node", PackageNode), internal_error("root that is not a node").
+:- attr("version", PackageNode), not attr("node", PackageNode), internal_error("version for nonexistant node").
+:- attr("node_version_satisfies", PackageNode), not attr("node", PackageNode), internal_error("version constraint on nonexistant node").
+:- attr("hash", PackageNode, _), not attr("node", PackageNode), internal_error("hash for nonexistant node").
+:- attr("node_platform", PackageNode, _), not attr("node", PackageNode), internal_error("platform for nonexistant node").
+:- attr("node_os", PackageNode, _), not attr("node", PackageNode), internal_error("os for nonexistant node").
+:- attr("node_target", PackageNode, _), not attr("node", PackageNode), internal_error("target for nonexistant node").
+:- attr("node_compiler_version", PackageNode, _, _), not attr("node", PackageNode), internal_error("compiler version for nonexistant node").
+:- attr("variant_value", PackageNode, _, _), not attr("node", PackageNode), internal_error("variant value for nonexistant node").
+:- attr("node_flag_compiler_default", PackageNode), not attr("node", PackageNode), internal_error("compiler flag default for nonexistant node").
+:- attr("node_flag", PackageNode, _, _), not attr("node", PackageNode), internal_error("node flag for nonexistant node").
+:- attr("node_flag_source", PackageNode, _, _), not attr("node", PackageNode), internal_error("node flag source for nonexistant node").
+:- attr("node_flag_source", _, _, ChildNode), not attr("node", ChildNode), internal_error("node flag source for nonexistant source").
+:- attr("no_flags", PackageNode, _), not attr("node", PackageNode), internal_error("no_flags for nonexistant node").
+:- attr("external_spec_selected", PackageNode, _), not attr("node", PackageNode), internal_error("external spec selected for nonexistant node").
+:- attr("depends_on", ParentNode, _, _), not attr("node", ParentNode), internal_error("dependency with nonexistant parent").
+:- attr("depends_on", _, ChildNode, _), not attr("node", ChildNode), internal_error("dependency with nonexistant child").
 
-:- attr("virtual_node", VirtualNode), not provider(_, VirtualNode).
-:- provider(_, VirtualNode), not attr("virtual_node", VirtualNode).
-:- provider(PackageNode, _), not attr("node", PackageNode).
+:- attr("virtual_node", VirtualNode), not provider(_, VirtualNode), internal_error("virtual node with no provider").
+:- provider(_, VirtualNode), not attr("virtual_node", VirtualNode), internal_error("provider with no virtual node").
+:- provider(PackageNode, _), not attr("node", PackageNode), internal_error("provider with no real node").
 
-:- attr("root", node(ID, PackageNode)), ID > min_dupe_id.
+:- attr("root", node(ID, PackageNode)), ID > min_dupe_id, internal_error("root in non-minimum unification set").
 
 % Nodes in the "root" unification set cannot depend on non-root nodes if the dependency is "link" or "run"
-:- attr("depends_on", node(min_dupe_id, Package), node(ID, _), "link"), ID != min_dupe_id, unification_set("root", node(min_dupe_id, Package)).
-:- attr("depends_on", node(min_dupe_id, Package), node(ID, _), "run"),  ID != min_dupe_id, unification_set("root", node(min_dupe_id, Package)).
+:- attr("depends_on", node(min_dupe_id, Package), node(ID, _), "link"), ID != min_dupe_id, unification_set("root", node(min_dupe_id, Package)), internal_error("link dependency out of the root unification set").
+:- attr("depends_on", node(min_dupe_id, Package), node(ID, _), "run"),  ID != min_dupe_id, unification_set("root", node(min_dupe_id, Package)), internal_error("run dependency out of the root unification set").
 
 % Rules on "unification sets", i.e. on sets of nodes allowing a single configuration of any given package
 unify(SetID, PackageName) :- unification_set(SetID, node(_, PackageName)).
-:- 2 { unification_set(SetID, node(_, PackageName)) }, unify(SetID, PackageName).
+:- 2 { unification_set(SetID, node(_, PackageName)) }, unify(SetID, PackageName), internal_error("unified package in multiple unification sets").
 
 unification_set("root", PackageNode) :- attr("root", PackageNode).
 unification_set(SetID, ChildNode) :- attr("depends_on", ParentNode, ChildNode, Type), Type != "build", unification_set(SetID, ParentNode).
@@ -87,22 +86,24 @@ unification_set(SetID, VirtualNode)
 %----
 
 % In the "root" unification set only ID = 0 are allowed
-:- unification_set("root", node(ID, _)), ID != 0.
+:- unification_set("root", node(ID, _)), ID != 0, internal_error("root unification set has node with non-zero unification set ID").
 
 % In the "root" unification set we allow only packages from the link-run possible subDAG
-:- unification_set("root", node(_, Package)), not possible_in_link_run(Package), not virtual(Package).
+:- unification_set("root", node(_, Package)), not possible_in_link_run(Package), not virtual(Package), internal_error("package outside possible link/run graph in root unification set").
 
 % Each node must belong to at least one unification set
-:- attr("node", PackageNode), not unification_set(_, PackageNode).
+:- attr("node", PackageNode), not unification_set(_, PackageNode), internal_error("node belongs to no unification set").
 
 % Cannot have a node with an ID, if lower ID of the same package are not used
 :- attr("node", node(ID1, Package)),
    not attr("node", node(ID2, Package)),
-   max_dupes(Package, X), ID1=0..X-1, ID2=0..X-1, ID2 < ID1.
+   max_dupes(Package, X), ID1=0..X-1, ID2=0..X-1, ID2 < ID1,
+   internal_error("node skipped id number").
 
 :- attr("virtual_node", node(ID1, Package)),
    not attr("virtual_node", node(ID2, Package)),
-   max_dupes(Package, X), ID1=0..X-1, ID2=0..X-1, ID2 < ID1.
+   max_dupes(Package, X), ID1=0..X-1, ID2=0..X-1, ID2 < ID1,
+   internal_error("virtual node skipped id number").
 
 %-----------------------------------------------------------------------------
 % Map literal input specs to facts that drive the solve
@@ -231,7 +232,8 @@ possible_version_weight(node(ID, Package), Weight)
 
 1 { version_weight(node(ID, Package), Weight) : pkg_fact(Package, version_declared(Version, Weight)) } 1
   :- attr("version", node(ID, Package), Version),
-     attr("node", node(ID, Package)).
+     attr("node", node(ID, Package)),
+     internal_error("version weights must exist and be unique").
 
 % node_version_satisfies implies that exactly one of the satisfying versions
 % is the package's version, and vice versa.
@@ -245,7 +247,8 @@ possible_version_weight(node(ID, Package), Weight)
 % bound on the choice rule to avoid false positives with the error below
 1 { attr("version", node(ID, Package), Version) : pkg_fact(Package, version_satisfies(Constraint, Version)) }
   :- attr("node_version_satisfies", node(ID, Package), Constraint),
-     pkg_fact(Package, version_satisfies(Constraint, _)).
+     pkg_fact(Package, version_satisfies(Constraint, _)),
+     internal_error("must choose a single version to satisfy version constraints").
 
 % More specific error message if the version cannot satisfy some constraint
 % Otherwise covered by `no_version_error` and `versions_conflict_error`.
