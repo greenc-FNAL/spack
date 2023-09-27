@@ -13,7 +13,6 @@ import spack.config
 import spack.database
 import spack.environment as ev
 import spack.main
-import spack.platforms
 import spack.schema.config
 import spack.spec
 import spack.store
