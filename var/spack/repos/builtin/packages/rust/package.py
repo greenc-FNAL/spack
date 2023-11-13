@@ -94,6 +94,10 @@ class Rust(Package):
         # Manually inject the path of openssl's certs for build.
         certs = join_path(self.spec["openssl"].prefix, "etc/openssl/cert.pem")
         env.set("CARGO_HTTP_CAINFO", certs)
+        env.set(
+            "CARGO_HOME",
+            os.path.join(os.path.dirname(self.stage.path), ".cargo")
+        )
 
     def configure(self, spec, prefix):
         opts = []
