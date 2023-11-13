@@ -110,6 +110,17 @@ class Catch2(CMakePackage):
     )
     variant("shared", when="@3:", default=False, description="Build shared library")
 
+  
+    variant(
+        "cxxstd",
+        when="@3:",
+        default="17",
+        values=("17", "20", "23"),
+        multi=False,
+        sticky=True,
+        description="C++ standard",
+    )
+
     def patch(self):
         filter_file(
             r'#include \<catch2',
@@ -138,8 +149,16 @@ class Catch2(CMakePackage):
         elif spec.satisfies("@2.1.1:"):
             args.append(self.define("BUILD_TESTING", self.run_tests))
         if spec.satisfies("@3:"):
-            args.append(self.define_from_variant("CMAKE_POSITION_INDEPENDENT_CODE", "pic"))
-            args.append(self.define_from_variant("BUILD_SHARED_LIBS", "shared"))
+            args.extend([
+                self.define("BUILD_TESTING", self.run_tests),
+                self.define("CATCH_BUILD_EXAMPLES", True),
+                self.define("CATCH_BUILD_EXTRA_TESTS", self.run_tests),
+                self.define("CATCH_BUILD_TESTING", self.run_tests),
+                self.define("CATCH_ENABLE_WERROR", True),
+                self.define("CATCH_INSTALL_EXTRAS", True),
+                self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
+                self.define("CMAKE_CXX_STANDARD_REQUIRED", True),
+            ])
 
         return args
 

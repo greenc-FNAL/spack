@@ -130,6 +130,9 @@ class Protobuf(CMakePackage):
             self.define_from_variant("BUILD_SHARED_LIBS", "shared"),
             self.define("protobuf_BUILD_TESTS", False),
             self.define("CMAKE_POSITION_INDEPENDENT_CODE", True),
+            self.define("protobuf_BUILD_SHARED_LIBS", True),
+            self.define("CMAKE_INSTALL_LIBDIR", "lib"),
+            self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
         ]
 
         if self.spec.satisfies("@3.22:"):
