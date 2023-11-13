@@ -20,6 +20,17 @@ class Ftgl(CMakePackage):
     # variant('doc', default=False, description='Build the documentation')
     variant("shared", default=True, description="Build as a shared library")
 
+    variant(
+        "cxxstd",
+        when="@2.3:",
+        default="17",
+        values=("17", "20", "23"),
+        multi=False,
+        sticky=True,
+        description="C++ standard",
+    )
+
+
     depends_on("cmake@2.8:", type="build")
     # depends_on('doxygen', type='build', when='+doc')  -- FIXME, see above
     depends_on("pkgconfig", type="build")
@@ -29,6 +40,17 @@ class Ftgl(CMakePackage):
 
     # Fix oversight in CMakeLists
     patch("remove-ftlibrary-from-sources.diff", when="@:2.4.0")
+
+    # ftgl (at least up to 2.4.0) uses `cmake_minimum_version(2.8)`,
+    # which doesn't honor CMAKE_CXX_STANDARD.
+    def flag_handler(self, name, flags):
+        with when("@2.3:"):
+            if name == "cxxflags":
+                flag_func_name = "self.compiler.cxx{0}_flag".format(
+                    self.spec.variants["cxxstd"].value
+                )
+                flags.append(eval(flag_func_name, {}, {"self": self}))
+        return (None, None, flags)
 
     def cmake_args(self):
         spec = self.spec
