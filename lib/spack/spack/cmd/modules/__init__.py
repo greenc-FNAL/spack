@@ -183,7 +183,7 @@ def loads(module_type, specs, args, out=None):
         for spec in specs
     )
 
-    module_commands = {"tcl": "module load ", "lmod": "module load "}
+    module_commands = {"tcl": "module load ", "lmod": "module load ", "ups_table": "module load ", "ups_version": "module load "}
 
     d = {"command": "" if not args.shell else module_commands[module_type], "prefix": args.prefix}
 

@@ -18,4 +18,6 @@ __all__ = ["TclModulefileWriter", "LmodModulefileWriter", "disable_modules"]
 module_types: Dict[str, Type[BaseModuleFileWriter]] = {
     "tcl": TclModulefileWriter,
     "lmod": LmodModulefileWriter,
+    "ups_table": UpsTableModulefileWriter,
+    "ups_version": UpsVersionModulefileWriter,
 }
