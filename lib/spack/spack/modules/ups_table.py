@@ -65,6 +65,16 @@ class UpsTableFileLayout(BaseFileLayout):
         """Returns the modulerc file associated with current module file"""
         return os.path.join(os.path.dirname(self.filename), ".modulerc")
 
+    @property
+    def filename(self):
+        """Name of the module file for the current spec."""
+        subdirname = self.spec.format("{name}").replace("-", "_")
+        if not os.access(os.path.join(self.dirname(), subdirname), os.F_OK):
+            os.makedirs(os.path.join(self.dirname(), subdirname))
+        fn = "{}-{}-{}.table".format(self.spec.name, self.spec.version, self.spec._hash)
+        fp = os.path.join(self.dirname(), subdirname, fn.replace("-", "_"))
+        return fp
+
 
 class UpsTableContext(BaseContext):
     """Context class for ups_table module files."""

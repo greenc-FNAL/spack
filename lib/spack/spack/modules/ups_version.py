@@ -65,6 +65,16 @@ class UpsVersionFileLayout(BaseFileLayout):
         """Returns the modulerc file associated with current module file"""
         return os.path.join(os.path.dirname(self.filename), ".modulerc")
 
+    @property
+    def filename(self):
+        """Name of the module file for the current spec."""
+        # Just the name of the file
+        filename = os.path.basename(self.use_name)
+        subdirname = self.spec.format("{name}/{version}.version").replace("-", "_")
+        if not os.access(os.path.join(self.dirname(), subdirname), os.F_OK):
+            os.makedirs(os.path.join(self.dirname(), subdirname))
+        return os.path.join(self.dirname(), subdirname, filename)
+
 
 class UpsVersionContext(BaseContext):
     """Context class for ups_version module files."""
