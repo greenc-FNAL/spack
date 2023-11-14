@@ -14,6 +14,9 @@ class CAres(CMakePackage):
     git = "https://github.com/c-ares/c-ares.git"
 
     version("master", branch="master")
+    version("1.21.0", sha256="ca92c84b3df3dc78ed0a5f32de5589e06469ca1c1af7b5a6d8e5e970b53ab5fd")
+    version("1.20.1", sha256="12db8d5d86c5117a7eca3d8f55090d42b01fc9b1bce08f6862d77df96ab21f54") 
+    version("1.19.1", sha256="9eadec0b34015941abdf3eb6aead694c8d96a192a792131186a7e0a86f2ad6d9")
     version("1.15.0", sha256="7deb7872cbd876c29036d5f37e30c4cbc3cc068d59d8b749ef85bb0736649f04")
     version("1.13.0", sha256="7c48c57706a38691041920e705d2a04426ad9c68d40edd600685323f214b2d57")
 
