@@ -38,5 +38,13 @@ class Gloo(CMakePackage, CudaPackage):
     generator("ninja")
     depends_on("cmake@2.8.12:", type="build")
 
+    def patch(self):
+        with(when("@2023-05-18")):
+            filter_file(
+               "#include <ifaddrs.h>",
+               "#include <array>\n#include <ifaddrs.h>",
+               "gloo/transport/tcp/device.cc",
+            )
+
     def cmake_args(self):
         return [self.define_from_variant("USE_CUDA", "cuda")]
