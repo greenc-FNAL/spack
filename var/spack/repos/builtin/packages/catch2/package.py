@@ -123,23 +123,6 @@ class Catch2(CMakePackage):
 
     def patch(self):
         filter_file(
-            r"#include <vector>",
-            "#include <vector>\n#include <cstdint>",
-            "src/catch2/internal/catch_string_manip.hpp",
-        )
-        filter_file(
-            r"#include <vector>",
-            "#include <vector>\n#include <cstdint>",
-            "src/catch2/internal/catch_xmlwriter.hpp",
-        )
-        filter_file(
-            r"#include <vector>",
-            "#include <vector>\n#include <cstdint>",
-            "src/catch2/catch_test_case_info.hpp",
-        )
-
-    def patch(self):
-        filter_file(
             r"#include \<catch2",
             "#include <cstdint>\n#include <catch2",
             "src/catch2/internal/catch_string_manip.hpp",

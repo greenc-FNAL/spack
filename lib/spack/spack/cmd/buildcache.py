@@ -57,7 +57,6 @@ from spack.oci.oci import (
     upload_manifest_with_retry,
 )
 from spack.spec import Spec, save_dependency_specfiles
-from spack.stage import Stage
 from spack.util.pattern import Args
 
 description = "create, download and install binary packages"
