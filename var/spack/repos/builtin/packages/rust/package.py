@@ -5,7 +5,6 @@
 
 import os
 import re
-import os
 
 from spack.package import *
 
