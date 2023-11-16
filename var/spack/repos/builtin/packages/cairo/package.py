@@ -76,7 +76,7 @@ class Cairo(AutotoolsPackage):
         which("sh")("./autogen.sh", extra_env={"NOCONFIGURE": "1"})
 
     def configure_args(self):
-        args = ["--disable-trace", "--enable-tee", 'MAKE="gmake"']  # can cause problems with libiberty
+        args = ["--disable-trace", "--enable-tee", '--disable-dependency-tracking', 'MAKE="gmake"']  # can cause problems with libiberty
 
         if "+X" in self.spec:
             args.extend(["--enable-xlib", "--enable-xcb"])
