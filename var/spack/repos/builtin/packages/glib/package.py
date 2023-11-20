@@ -206,7 +206,6 @@ class BaseBuilder(metaclass=spack.builder.PhaseCallbacksMeta):
     def dtrace_copy_path(self):
         return join_path(self.stage.source_path, "dtrace-copy")
 
-    @run_before("install")
     def fix_python_path(self):
         if not self.spec.satisfies("@2.53.4:"):
             return
@@ -322,6 +321,10 @@ class MesonBuilder(BaseBuilder, spack.build_systems.meson.MesonBuilder):
                     args.append("-Diconv=gnu")
         return args
 
+    @run_before("meson")
+    def fix_python_path(self):
+        super().fix_python_path()
+
 
 class AutotoolsBuilder(BaseBuilder, spack.build_systems.autotools.AutotoolsBuilder):
     def configure_args(self):
@@ -364,3 +367,7 @@ class AutotoolsBuilder(BaseBuilder, spack.build_systems.autotools.AutotoolsBuild
         args.append("GTKDOC_MKPDF={0}".format(true))
         args.append("GTKDOC_REBASE={0}".format(true))
         return args
+
+    @run_before("configure")
+    def fix_python_path(self):
+        super().fix_python_path()
