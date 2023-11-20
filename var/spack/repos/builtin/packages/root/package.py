@@ -107,6 +107,8 @@ class Root(CMakePackage):
         sha256="397f2de7db95a445afdb311fc91c40725fcfad485d58b4d72e6c3cdd0d0c5de7",
         when="@6.26:6.26.06 +root7 ^nlohmann-json@3.11:",
     )
+    # Support recent versions of protobuf with their own CMake config
+    patch("protobuf-config.patch", when="^protobuf")
 
     if sys.platform == "darwin":
         # Resolve non-standard use of uint, _cf_
@@ -122,6 +124,8 @@ class Root(CMakePackage):
 
     variant("aqua", default=False, description="Enable Aqua interface")
     variant("arrow", default=False, description="Enable Arrow interface")
+    variant("cuda", when="@6.08.00:", default=False, description="Enable CUDA support")
+    variant("cudnn", when="@6.20.02:", default=False, description="Enable cuDNN support")
     variant("davix", default=True, description="Compile with external Davix")
     variant("dcache", default=False, description="Enable support for dCache")
     variant("emacs", default=False, description="Enable Emacs support")
@@ -183,6 +187,10 @@ class Root(CMakePackage):
     variant("tbb", default=True, description="TBB multi-threading support")
     variant("threads", default=True, description="Enable using thread library")
     variant("tmva", default=False, description="Build TMVA multi variate analysis library")
+    variant("tmva-cpu", when="@6.15.02:", default=True, description="Build TMVA with CPU support for deep learning (requires BLAS)")
+    variant("tmva-gpu",when="@6.15.02:",  default=False, description="Build TMVA with GPU support for deep learning (requries CUDA)")
+    variant("tmva-pymva", when="@6.17.02:", default=False, description="Enable support for Python in TMVA (requires numpy)")
+    variant("tmva-sofie", when="@6.25.02:", default=False, description="Build TMVA with support for sofie - fast inference code generation (requires protobuf 3)")
     variant("unuran", default=True, description="Use UNURAN for random number generation")
     variant("vc", default=False, description="Enable Vc for adding new types for SIMD programming")
     variant("vdt", default=True, description="Enable set of fast and vectorisable math functions")
@@ -217,7 +225,6 @@ class Root(CMakePackage):
     depends_on("cmake@3.19:", type="build", when="@6.28.00: platform=darwin")
     depends_on("pkgconfig", type="build")
 
-    depends_on("blas")
     depends_on("freetype")
     depends_on("jpeg")
     depends_on("libice")
@@ -255,14 +262,20 @@ class Root(CMakePackage):
     # Python
     depends_on("python@2.7:", when="+python", type=("build", "run"))
     depends_on("python@2.7:3.10", when="@:6.26.09 +python", type=("build", "run"))
-    depends_on("py-numpy", type=("build", "run"), when="+tmva")
-    # This numpy dependency was not intended and will hopefully
-    # be fixed in 6.20.06.
+    depends_on("py-numpy", type=("build", "run"), when="+tmva-pymva")
     # See: https://sft.its.cern.ch/jira/browse/ROOT-10626
     depends_on("py-numpy", type=("build", "run"), when="@6.20.00:6.20.05 +python")
 
+    # TMVA
+    depends_on("blas", when="+tmva-cpu")
+    depends_on("cuda", when="+tmva-gpu")
+    depends_on("protobuf@3:", when="+tmva-sofie")
+
     # Optional dependencies
     depends_on("arrow", when="+arrow")
+    depends_on("cuda", when="+cuda")
+    depends_on("cuda", when="+cudnn")
+    depends_on("cudnn", when="+cudnn")
     depends_on("davix @0.7.1:", when="+davix")
     depends_on("dcap", when="+dcache")
     depends_on("cfitsio", when="+fits")
@@ -327,6 +340,11 @@ class Root(CMakePackage):
     conflicts("+math", when="~gsl", msg="root+math requires GSL")
     conflicts("+tmva", when="~gsl", msg="root+tmva requires GSL")
     conflicts("+tmva", when="~mlp", msg="root+tmva requires MLP")
+    conflicts("+tmva-cpu", when="~tmva", msg="root+tmva-cpu requires TMVA")
+    conflicts("+tmva-gpu", when="~tmva", msg="root+tmva-gpu requires TMVA")
+    conflicts("+tmva-gpu", when="~cuda", msg="root+tmva-gpu requires CUDA")
+    conflicts("+tmva-pymva", when="~tmva", msg="root+tmva-pymva requires TMVA")
+    conflicts("+tmva-sofie", when="~tmva", msg="root+tmva-sofie requires TMVA")
     conflicts("~http", when="@6.29.00: +webgui", msg="root+webgui requires HTTP")
     conflicts("cxxstd=11", when="+root7", msg="root7 requires at least C++14")
     conflicts("cxxstd=11", when="@6.25.02:", msg="This version of root requires at least C++14")
@@ -444,6 +462,10 @@ class Root(CMakePackage):
         _add_variant(v, f, "table", "+table")
         _add_variant(v, f, "thread", "+threads")
         _add_variant(v, f, "tmva", "+tmva")
+        _add_variant(v, f, "tmva-cpu", "+tmva-cpu")
+        _add_variant(v, f, "tmva-gpu", "+tmva-gpu")
+        _add_variant(v, f, "tmva-pymva", "+tmva-pymva")
+        _add_variant(v, f, "tmva-sofie", "+tmva-sofie")
         _add_variant(v, f, "unuran", "+unuran")
         _add_variant(v, f, "vc", "+vc")
         _add_variant(v, f, "vdt", "+vdt")
@@ -595,6 +617,9 @@ class Root(CMakePackage):
             define_from_variant("xrootd"),
         ]
 
+        if self.spec.satisfies("@6.08.00:"):
+            options.append(define_from_variant("cuda"))
+
         # Necessary due to name change of variant (webui->webgui)
         # https://github.com/root-project/root/commit/d631c542909f2f793ca7b06abc622e292dfc4934
         if self.spec.satisfies("@:6.17.02"):
@@ -603,10 +628,21 @@ class Root(CMakePackage):
             options.append(define_from_variant("webgui", "webgui"))
 
         # Some special features
+        if self.spec.satisfies("@6.15.02:"):
+            options.append(define_from_variant("tmva-cpu"))
+            options.append(define_from_variant("tmva-gpu"))
+
+        if self.spec.satisfies("@6.17.02:"):
+            options.append(define_from_variant("tmva-pymva"))
+
         if self.spec.satisfies("@6.20.02:"):
+            options.append(define_from_variant("cudnn"))
             options.append(define_from_variant("pyroot", "python"))
         else:
             options.append(define_from_variant("python"))
+
+        if self.spec.satisfies("@6.25.02:"):
+            options.append(define_from_variant("tmva-sofie"))
 
         # #################### Compiler options ####################
 
