@@ -209,7 +209,8 @@ class Root(CMakePackage):
         "tmva-sofie",
         when="@6.25.02:",
         default=False,
-        description="Build TMVA with support for sofie - fast inference code generation (requires protobuf 3)",
+        description="Build TMVA with support for sofie - "
+        "fast inference code generation (requires protobuf 3)",
     )
     variant("unuran", default=True, description="Use UNURAN for random number generation")
     variant("vc", default=False, description="Enable Vc for adding new types for SIMD programming")
