@@ -61,10 +61,7 @@ class Glib(MesonPackage, AutotoolsPackage):
     version("2.62.6", sha256="104fa26fbefae8024ff898330c671ec23ad075c1c0bce45c325c6d5657d58b9c")
     version("2.60.7", sha256="8b12c0af569afd3b71200556ad751bad4cf4bf7bc4b5f880638459a42ca86310")
     version("2.58.3", sha256="8f43c31767e88a25da72b52a40f3301fefc49a665b56dc10ee7cc9565cbe7481")
-    version(
-        "2.56.4",
-        sha256="27f703d125efb07f8a743666b580df0b4095c59fc8750e8890132c91d437504c",
-    )
+    version("2.56.4", sha256="27f703d125efb07f8a743666b580df0b4095c59fc8750e8890132c91d437504c")
     version(
         "2.56.3",
         sha256="a9a4c5b4c81b6c75bc140bdf5e32120ef3ce841b7413214ecf5f987acec74cb2",

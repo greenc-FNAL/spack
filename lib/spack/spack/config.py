@@ -768,7 +768,7 @@ def _add_platform_scopes(cfg, scope_type, name, path):
     cfg.push_scope(scope_type(scope_name, scope_path))
 
     scope_name = os.path.join(scope_name, host_target)
-    scope_path = os.path.join(scope_path, host_target) 
+    scope_path = os.path.join(scope_path, host_target)
     cfg.push_scope(scope_type(scope_name, scope_path))
 
 

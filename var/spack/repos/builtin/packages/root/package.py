@@ -187,10 +187,30 @@ class Root(CMakePackage):
     variant("tbb", default=True, description="TBB multi-threading support")
     variant("threads", default=True, description="Enable using thread library")
     variant("tmva", default=False, description="Build TMVA multi variate analysis library")
-    variant("tmva-cpu", when="@6.15.02:", default=True, description="Build TMVA with CPU support for deep learning (requires BLAS)")
-    variant("tmva-gpu",when="@6.15.02:",  default=False, description="Build TMVA with GPU support for deep learning (requries CUDA)")
-    variant("tmva-pymva", when="@6.17.02:", default=False, description="Enable support for Python in TMVA (requires numpy)")
-    variant("tmva-sofie", when="@6.25.02:", default=False, description="Build TMVA with support for sofie - fast inference code generation (requires protobuf 3)")
+    variant(
+        "tmva-cpu",
+        when="@6.15.02:",
+        default=True,
+        description="Build TMVA with CPU support for deep learning (requires BLAS)",
+    )
+    variant(
+        "tmva-gpu",
+        when="@6.15.02:",
+        default=False,
+        description="Build TMVA with GPU support for deep learning (requries CUDA)",
+    )
+    variant(
+        "tmva-pymva",
+        when="@6.17.02:",
+        default=False,
+        description="Enable support for Python in TMVA (requires numpy)",
+    )
+    variant(
+        "tmva-sofie",
+        when="@6.25.02:",
+        default=False,
+        description="Build TMVA with support for sofie - fast inference code generation (requires protobuf 3)",
+    )
     variant("unuran", default=True, description="Use UNURAN for random number generation")
     variant("vc", default=False, description="Enable Vc for adding new types for SIMD programming")
     variant("vdt", default=True, description="Enable set of fast and vectorisable math functions")
