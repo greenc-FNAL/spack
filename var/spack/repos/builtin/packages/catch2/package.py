@@ -17,7 +17,6 @@ class Catch2(CMakePackage):
     maintainers("ax3l", "greenc-FNAL")
 
     # In-Development
-
     version("develop", branch="devel")
 
     # Releases
