@@ -108,7 +108,7 @@ class Root(CMakePackage):
         when="@6.26:6.26.06 +root7 ^nlohmann-json@3.11:",
     )
     # Support recent versions of protobuf with their own CMake config
-    patch("protobuf-config.patch", when="^protobuf")
+    patch("protobuf-config.patch", level=0, when="^protobuf")
 
     if sys.platform == "darwin":
         # Resolve non-standard use of uint, _cf_
