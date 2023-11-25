@@ -55,7 +55,7 @@ class Sleef(CMakePackage):
     def cmake_args(self):
         # Taken from PyTorch's aten/src/ATen/CMakeLists.txt
         return [
-            self.define("BUILD_SHARED_LIBS", False),
+            self.define("BUILD_SHARED_LIBS", True),
             self.define("BUILD_DFT", False),
             self.define("BUILD_GNUABI_LIBS", False),
             self.define("BUILD_TESTS", False),
