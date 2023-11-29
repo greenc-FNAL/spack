@@ -204,10 +204,10 @@ def tokenize(text: str) -> Iterator[Token]:
     match: Optional[Match] = None
     for match in iter(scanner.match, None):
         yield Token(
-            TokenType.__members__[match.lastgroup],  # type: ignore[attr-defined]
-            match.group(),  # type: ignore[attr-defined]
-            match.start(),  # type: ignore[attr-defined]
-            match.end(),  # type: ignore[attr-defined]
+            TokenType.__members__[match.lastgroup],  # type: ignore[index,union-attr]
+            match.group(),  # type: ignore[union-attr]
+            match.start(),  # type: ignore[union-attr]
+            match.end(),  # type: ignore[union-attr]
         )
 
     if match is None and not text:
