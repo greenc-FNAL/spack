@@ -1997,7 +1997,7 @@ def _extract_inner_tarball(spec, filename, extract_to, unsigned, remote_checksum
     json_name = tarball_name(spec, ".spec.json")
     json_path = os.path.join(extract_to, json_name)
     with closing(tarfile.open(spackfile_path, "r")) as tar:
-        tar.extractall(extract_to)
+        tar.extractall(extract_to, mtime=time.time())
     # some buildcache tarfiles use bzip2 compression
     if not os.path.exists(tarfile_path):
         tarfile_name = tarball_name(spec, ".tar.bz2")
