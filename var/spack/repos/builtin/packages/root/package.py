@@ -119,6 +119,8 @@ class Root(CMakePackage):
 
     patch("webgui.patch", level=0, when="@6.26.00:6.26.10,6.28.00:6.28.08,6.30.00 +webgui")
 
+    patch("webgui.patch", level=0, when="@6.26.00:6.26.10,6.28.00:6.28.08 +webgui")
+
     if sys.platform == "darwin":
         # Resolve non-standard use of uint, _cf_
         # https://sft.its.cern.ch/jira/browse/ROOT-7886.
