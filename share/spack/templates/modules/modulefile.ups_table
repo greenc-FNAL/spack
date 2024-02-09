@@ -18,14 +18,15 @@ FLAVOR=ANY
 {%endif%}
 
 {%if  upscompquals  %}
-QUALIFIERS="{{upscompquals}}:{{upsdebugquals}}"
+QUALIFIERS="{{upscompquals}}:{{upsdebugquals}}{%if "experiment" in spec.variants%}:{{spec.variants["experiment"]|replace('=','_')}}{%endif%}"
 {%else%}
-QUALIFIERS=""
+QUALIFIERS="{%if "experiment" in spec.variants%}{{spec.variants["experiment"]|replace('=','_')}}{%endif%}"
 {%endif%}
 
-
-{%set spack_root = os.environ['SPACK_ROOT'] %}
+{%set spack_root = os.path.realpath(os.environ['SPACK_ROOT']) %}
 {%set install_root = spack_root[0:spack_root.find('/spack/')] %}
+# prefix: {{spec.prefix}}
+# install_root: {{install_root}}
 {%if spec.prefix.startswith(install_root) %}
 
 Action = setup
@@ -33,8 +34,7 @@ Action = setup
     setupEnv()
 {% for package in spec._dependencies.keys() %}
   {% if spec[package].prefix.startswith(install_root) %}
-
-    setupOptional({{package|replace("-","_")}} {%for c in (spec|string|replace('\n',' ')).split('^')%}{%if c.split('@')[0] == package%}{{c.split('@')[1].split('%')[0]}}{%endif%}{%endfor%} -f ${UPS_PROD_FLAVOR} -q "${UPS_PROD_QUALIFIERS}")
+    setupOptional({{package|replace("-","_")}} {{spec[package].version}} -f ${UPS_PROD_FLAVOR} -q "${UPS_PROD_QUALIFIERS}")
   {% endif %}
 {% endfor %}
 
