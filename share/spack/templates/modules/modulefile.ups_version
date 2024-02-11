@@ -38,15 +38,17 @@ VERSION = {{spec.version}}
 {% elif (spec.compiler|string).find('clang@5.0.1')==0 %}{%set upscompquals = 'c2' %}
 {% endif %}
 
+# spec.variants[experiment]: {%if "experiment" in spec.variants%}:{{spec.variants["experiment"]}}{%endif%}
+
 {% if (spec.compiler_flags|string).find('-g')>0 %}{%set upsdebugquals="debug"%}
 {%else%}{%set upsdebugquals="opt"%}
 {%endif%}
 
 FLAVOR="{{upsos}}{{upsbits}}{{upsrelglibc}}"
 {%if  upscompquals  %}
-QUALIFIERS="{{upscompquals}}:{{upsdebugquals}}"
+QUALIFIERS="{{upscompquals}}:{{upsdebugquals}}{%if "experiment" in spec.variants%}:{{spec.variants["experiment"]|replace('=','_')}}{%endif%}"
 {%else%}
-QUALIFIERS=""
+QUALIFIERS="{%if "experiment" in spec.variants%}:{{spec.variants["experiment"]|replace('=','_')}}{%endif%}"
 {%endif%}
 
   DECLARER = {{username}}
