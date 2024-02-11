@@ -47,6 +47,7 @@ import spack.oci.opener
 import spack.platforms
 import spack.relocate as relocate
 import spack.repo
+import spack.spec as spec
 import spack.stage
 import spack.store
 import spack.traverse as traverse
@@ -1399,6 +1400,16 @@ def _build_tarball_in_stage_dir(spec: Spec, out_url: str, stage_dir: str, option
 
     checksum, _ = _do_create_tarball(tarfile_path, binaries_dir, buildinfo)
 
+    if spec_file.endswith(".yaml"):
+        #convert old spec.yaml files to json first
+        conv_file = spec_file.replace(".yaml", ".json")
+        yf = spec.Spec.from_specfile(spec_file)
+        with open(conv_file,"w") as out:
+            yf.to_json(out)
+            
+        os.rename(spec_file, spec_file+".orig")
+        spec_file = conv_file
+        
     # add sha256 checksum to spec.json
     with open(spec_file, "r") as inputfile:
         content = inputfile.read()
