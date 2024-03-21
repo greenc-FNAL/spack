@@ -121,6 +121,18 @@ class Root(CMakePackage):
 
     patch("webgui.patch", level=0, when="@6.26.00:6.26.10,6.28.00:6.28.08,6.30.00 +webgui")
 
+    # Back-ported patches fixing segfault in weighted likelihood fits
+    patch(
+        "https://github.com/root-project/root/commit/2f00d6df258906c1f6fe848135a88b836db3077f.patch?full_index=1",
+        sha256="8da36032082e65ae246c03558a4c3fd67b157d1d0c6d20adac9de263279d1db6",
+        when="@6.28:6.28.12",
+    )
+    patch(
+        "https://github.com/root-project/root/commit/14838b35600b08278e69bc3d8d8669773bc11399.patch?full_index=1",
+        sha256="4647898ef28cb1adbaacdeedb04b417d69ccbaf02fc2b3aab20e07c0b2a96a0f",
+        when="@6.30:6.30.04",
+    )
+
     if sys.platform == "darwin":
         # Resolve non-standard use of uint, _cf_
         # https://sft.its.cern.ch/jira/browse/ROOT-7886.
