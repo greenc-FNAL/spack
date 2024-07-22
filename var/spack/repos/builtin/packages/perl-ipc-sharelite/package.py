@@ -19,4 +19,5 @@ class PerlIpcSharelite(PerlPackage):
     version("0.17", sha256="14d406b91da96d6521d0d1a82d22a306274765226b86b0a56e7ffddcf96ae7bf")
     version("0.16", sha256="9acc120d954dfa7d02a90d319130791d93a62abbdbf1727f366d0714396f291f")
 
+    depends_on("c", type="build")  # generated
     depends_on("perl-extutils-makemaker", type="build")

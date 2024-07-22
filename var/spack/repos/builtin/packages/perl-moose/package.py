@@ -55,6 +55,8 @@ class PerlMoose(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/E/ET/ETHER/Moose-2.2006.tar.gz",
     )
 
+    depends_on("c", type="build")  # generated
+
     depends_on("perl-cpan-meta-check", type=("build", "run"))
     depends_on("perl-test-cleannamespaces", type=("build", "run"))
     depends_on("perl-devel-overloadinfo", type=("build", "run"))

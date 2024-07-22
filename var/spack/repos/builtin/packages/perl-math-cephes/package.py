@@ -25,3 +25,5 @@ class PerlMathCephes(PerlPackage):
         sha256="5d2cc55965505eee4fc8da870cb4754c0eeff144afb6254848d8c3b24b30a981",
         url="https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Math-Cephes-0.5304.tar.gz",
     )
+
+    depends_on("c", type="build")  # generated

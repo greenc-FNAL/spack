@@ -640,7 +640,7 @@ spack:
         config("update", "-y", "config")
 
     with ev.Environment(str(tmpdir)) as e:
-        assert not e.manifest.pristine_yaml_content["spack"]["config"]["ccache"]
+        assert not e.manifest.yaml_content["spack"]["config"]["ccache"]
 
 
 def test_config_list_scopes():

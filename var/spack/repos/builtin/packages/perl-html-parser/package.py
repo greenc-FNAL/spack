@@ -30,6 +30,8 @@ class PerlHtmlParser(PerlPackage):
     provides("perl-html-pullparser")
     provides("perl-html-tokeparser")
 
+    depends_on("c", type="build")  # generated
+
     depends_on("perl@5.8:", type=("build", "run", "test"))
     depends_on("perl-uri", type=("build", "run", "test"))
     depends_on("perl-uri-url", type="run")

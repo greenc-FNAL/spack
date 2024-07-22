@@ -72,7 +72,7 @@ jobs:
       run: |
           # Need this for the git tests to succeed.
           git --version
-          . .github/workflows/setup_git.sh
+          . .github/workflows/bin/setup_git.sh
     - name: Bootstrap clingo
       if: ${{ matrix.concretizer == 'clingo' }}
       env:
@@ -118,7 +118,7 @@ jobs:
       run: |
           # Need this for the git tests to succeed.
           git --version
-          . .github/workflows/setup_git.sh
+          . .github/workflows/bin/setup_git.sh
     - name: Run shell tests
       env:
           COVERAGE: true
@@ -147,7 +147,7 @@ jobs:
           git --version
           git config --global --add safe.directory /__w/spack/spack
           git fetch --unshallow
-          . .github/workflows/setup_git.sh
+          . .github/workflows/bin/setup_git.sh
           useradd spack-test
           chown -R spack-test .
     - name: Run unit tests
@@ -178,7 +178,7 @@ jobs:
       run: |
           # Need this for the git tests to succeed.
           git --version
-          . .github/workflows/setup_git.sh
+          . .github/workflows/bin/setup_git.sh
     - name: Run unit tests (full suite with coverage)
       env:
           COVERAGE: true
@@ -217,7 +217,7 @@ jobs:
         SPACK_TEST_PARALLEL: 4
       run: |
         git --version
-        . .github/workflows/setup_git.sh
+        . .github/workflows/bin/setup_git.sh
         . share/spack/setup-env.sh
         $(which spack) bootstrap disable spack-install
         $(which spack) solve zlib
@@ -226,5 +226,36 @@ jobs:
     - uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673
       with:
         flags: unittests,macos
+        token: ${{ secrets.CODECOV_TOKEN }}
+        verbose: true
+  # Run unit tests on Windows
+  windows:
+    defaults:
+      run:
+        shell:
+          powershell Invoke-Expression -Command "./share/spack/qa/windows_test_setup.ps1"; {0}
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-python@39cd14951b08e74b54015e9e001cdefcf80e669f
+      with:
+        python-version: 3.9
+    - name: Install Python packages
+      run: |
+          python -m pip install --upgrade pip pywin32 setuptools pytest-cov clingo
+    - name: Create local develop
+      run: |
+        ./.github/workflows/bin/setup_git.ps1
+    - name: Unit Test
+      run: |
+        spack unit-test -x --verbose --cov --cov-config=pyproject.toml
+        ./share/spack/qa/validate_last_exit.ps1
+        coverage combine -a
+        coverage xml
+    - uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673
+      with:
+        flags: unittests,windows
         token: ${{ secrets.CODECOV_TOKEN }}
         verbose: true

@@ -22,6 +22,8 @@ class PerlSerealEncoder(PerlPackage):
 
     provides("perl-sereal-encoder-constants")
 
+    depends_on("c", type="build")  # generated
+
     depends_on("perl@5.8.0:", type=("build", "link", "run", "test"))
 
     depends_on("perl-devel-checklib@1.16:", when="@5.004:", type=("build"))

@@ -28,6 +28,8 @@ class Diffutils(AutotoolsPackage, GNUMirrorPackage):
     version("3.6", sha256="d621e8bdd4b573918c8145f7ae61817d1be9deb4c8d2328a65cea8e11d783bd6")
     version("3.3", sha256="a25e89a8ab65fded1731e4186be1bb25cda967834b6df973599cdcd5abdfc19c")
 
+    depends_on("c", type="build")  # generated
+
     build_directory = "spack-build"
 
     patch("nvhpc.patch", when="@3.7 %nvhpc")

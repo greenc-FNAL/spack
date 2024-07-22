@@ -12,11 +12,12 @@ class PyBabel(PythonPackage):
     emphasis on web-based applications."""
 
     homepage = "https://babel.pocoo.org/en/latest/"
-    pypi = "Babel/Babel-2.7.0.tar.gz"
+    pypi = "Babel/babel-2.15.0.tar.gz"
     git = "https://github.com/python-babel/babel"
 
     license("BSD-3-Clause")
 
+    version("2.15.0", sha256="8daf0e265d05768bc6c7a314cf1321e9a123afc328cc635c18622a2f30a04413")
     version("2.12.1", sha256="cc2d99999cd01d44420ae725a21c9e3711b3aadc7976d6147f622d8581963455")
     version("2.12.0", sha256="468e6cd1e2b571a1663110fc737e3a7d9069d038e0c9c4a7f158caeeafe4089c")
     version("2.11.0", sha256="5ef4b3226b0180dedded4229651c8b0e1a3a6a2837d45a073272f313e4cf97f6")
@@ -30,3 +31,10 @@ class PyBabel(PythonPackage):
     depends_on("py-setuptools", type=("build", "run"))
     depends_on("py-pytz@2015.7:", when="@2.12: ^python@:3.8", type=("build", "run"))
     depends_on("py-pytz@2015.7:", when="@:2.10", type=("build", "run"))
+
+    def url_for_version(self, version):
+        url = "https://files.pythonhosted.org/packages/source/B/Babel/{}-{}.tar.gz"
+        name = "Babel"
+        if version >= Version("2.15"):
+            name = name.lower()
+        return url.format(name, version)

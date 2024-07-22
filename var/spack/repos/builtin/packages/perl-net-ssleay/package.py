@@ -44,6 +44,8 @@ class PerlNetSsleay(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/M/MI/MIKEM/Net-SSLeay-1.82.tar.gz",
     )
 
+    depends_on("c", type="build")  # generated
+
     depends_on("openssl")
 
     provides("perl-net-ssleay-handle")

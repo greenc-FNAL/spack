@@ -45,6 +45,8 @@ class PerlXmlLibxml(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/XML-LibXML-2.0201.tar.gz",
     )
 
+    depends_on("c", type="build")  # generated
+
     depends_on("libxml2")
     depends_on("perl-xml-namespacesupport", type=("build", "run"))
     depends_on("perl-xml-sax", type=("build", "run"))

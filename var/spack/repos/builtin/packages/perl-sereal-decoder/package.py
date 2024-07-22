@@ -24,18 +24,18 @@ class PerlSerealDecoder(PerlPackage):
     provides("perl-sereal-decoder-constants")
     provides("perl-sereal-performance")
 
-    depends_on("perl@5.8:", type=("build", "link", "run", "test"))
+    depends_on("c", type="build")  # generated
 
-    depends_on("perl-devel-checklib@1.16:", when="@5.004:", type=("build"))
-    depends_on("perl-extutils-parsexs@2.21:", when="@:5.001", type=("build"))
-    depends_on("perl-extutils-makemaker@7.0:", when="@:5.001", type=("build"))
+    depends_on("perl@5.8.0:", type=("build", "link", "run", "test"))
 
-    depends_on("perl-test-longstring", type=("build", "test"))
-    depends_on("perl-test-differences", type=("build", "test"))
-    depends_on("perl-test-deep", type=("build", "test"))
-    depends_on("perl-test-warn", type=("build", "test"))
-    depends_on("perl-scalar-util", type=("build", "test"))
+    depends_on("perl-devel-checklib@1.16:", type=("build"))
+
     depends_on("perl-data-dumper", type=("build", "test"))
+    depends_on("perl-scalar-util", type=("build", "test"))
+    depends_on("perl-test-deep", type=("build", "link", "test"))
+    depends_on("perl-test-differences", type=("build", "link", "test"))
+    depends_on("perl-test-longstring", type=("build", "link", "test"))
+    depends_on("perl-test-warn", type=("build", "link", "test"))
     depends_on("zstd", type=("build", "link", "run", "test"))
 
     def setup_build_environment(self, env):

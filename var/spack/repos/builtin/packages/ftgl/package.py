@@ -29,6 +29,9 @@ class Ftgl(CMakePackage):
         description="C++ standard",
     )
 
+    depends_on("c", type="build")  # generated
+    depends_on("cxx", type="build")  # generated
+
     # FIXME: Doc generation is broken in upstream build system
     # variant('doc', default=False, description='Build the documentation')
     variant("shared", default=True, description="Build as a shared library")

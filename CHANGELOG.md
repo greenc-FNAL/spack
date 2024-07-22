@@ -1,3 +1,4 @@
+
 # v0.22.0 (2024-05-12)
 
 `v0.22.0` is a major feature release.
@@ -82,21 +83,22 @@
     spack install zlib cflags=\"-O2 -g\"
     ```
 
-    That will now result in an error. The correct format (which you probably expected in
-    the first place) is:
+    That will now result in an error, but you can now write what you probably expected
+    to work in the first place:
 
     ```
     spack install zlib cflags="-O2 -g"
     ```
 
-    Quoted can also now include special characters, enabling commands like:
+    Quoted can also now include special characters, so you can supply flags like:
 
     ```
-    spack install zlib ldflags='-Wl,-rpath=$ORIGIN/_libs'
+    spack intall zlib ldflags='-Wl,-rpath=$ORIGIN/_libs'
     ```
 
-    To reduce ambiguity in parsing, do *not* put spaces around `=` and `==` in
-    flags or variants, as this will now result in an error:
+    To reduce ambiguity in parsing, we now require that you *not* put spaces around `=`
+    and `==` when for flags or variants. This would not have broken before but will now
+    result in an error:
 
     ```
     spack install zlib cflags = "-O2 -g"
@@ -162,7 +164,7 @@
          include: ["openmpi"]
    ```
 
-6. **Add new `redistribute()` directive**
+6. **New `redistribute()` directive**
 
    Some packages can't be redistributed in source or binary form. We need an explicit
    way to say that in a package.
@@ -255,56 +257,59 @@
 
 ## New commands, options, and directives
 
-   * Allow packages to be pushed to build cache after install from source (#42423)
-   * `spack develop`: stage build artifacts in same root as non-dev builds #41373
-   * Don't delete `spack develop` build artifacts after install (#43424)
-   * `spack find`: add options for local/upstream only (#42999)
-   * `spack logs`: print log files for packages (either partially built or installed) (#42202)
-   * `patch`: support reversing patches (#43040)
-   * `develop`: Add -b/--build-directory option to set build_directory package attribute (#39606)
-   * `spack list`: add `--namesapce` / `--repo` option (#41948)
-   * directives: add `checked_by` field to `license()`, add some license checks
-   * `spack gc`: add options for environments and build dependencies (#41731)
-   * Add `--create` to `spack env activate` (#40896)
+* Allow packages to be pushed to build cache after install from source (#42423)
+* `spack develop`: stage build artifacts in same root as non-dev builds #41373
+  * Don't delete `spack develop` build artifacts after install (#43424)
+* `spack find`: add options for local/upstream only (#42999)
+* `spack logs`: print log files for packages (either partially built or installed) (#42202)
+* `patch`: support reversing patches (#43040)
+* `develop`: Add -b/--build-directory option to set build_directory package attribute (#39606)
+* `spack list`: add `--namesapce` / `--repo` option (#41948)
+* directives: add `checked_by` field to `license()`, add some license checks
+* `spack gc`: add options for environments and build dependencies (#41731)
+* Add `--create` to `spack env activate` (#40896)
 
 ## Performance improvements
 
-   * environment.py: fix excessive re-reads (#43746)
-   * ruamel yaml: fix quadratic complexity bug  (#43745)
-   * Refactor to improve `spec format` speed (#43712)
-   * Do not acquire a write lock on the env post install if no views (#43505)
-   * asp.py: fewer calls to `spec.copy()` (#43715)
-   * spec.py: early return in `__str__`
-   * avoid `jinja2` import at startup unless needed (#43237)
+* environment.py: fix excessive re-reads (#43746)
+* ruamel yaml: fix quadratic complexity bug  (#43745)
+* Refactor to improve `spec format` speed (#43712)
+* Do not acquire a write lock on the env post install if no views (#43505)
+* asp.py: fewer calls to `spec.copy()` (#43715)
+* spec.py: early return in `__str__`
+* avoid `jinja2` import at startup unless needed (#43237)
 
 ## Other new features of note
 
-   * `archspec`: update to `v0.2.4`: support for Windows, bugfixes for `neoverse-v1` and
-     `neoverse-v2` detection.
-   * `spack config get`/`blame`: with no args, show entire config
-   * `spack env create <env>`: dir if dir-like (#44024)
-   * ASP-based solver: update os compatibility for macOS (#43862)
-   * Add handling of custom ssl certs in urllib ops (#42953)
-   * Add ability to rename environments (#43296)
-   * Add config option and compiler support to reuse across OS's (#42693)
-   * Support for prereleases (#43140)
-   * Only reuse externals when configured (#41707)
-   * Environments: Add support for including views (#42250)
-   * Make signed/unsigned a mirror configuration property (#41507)
+* `archspec`: update to `v0.2.4`: support for Windows, bugfixes for `neoverse-v1` and
+  `neoverse-v2` detection.
+* `spack config get`/`blame`: with no args, show entire config
+* `spack env create <env>`: dir if dir-like (#44024)
+* ASP-based solver: update os compatibility for macOS (#43862)
+* Add handling of custom ssl certs in urllib ops (#42953)
+* Add ability to rename environments (#43296)
+* Add config option and compiler support to reuse across OS's (#42693)
+* Support for prereleases (#43140)
+* Only reuse externals when configured (#41707)
+* Environments: Add support for including views (#42250)
+
+## Binary caches
+* Build cache: make signed/unsigned a mirror property (#41507)
+* tools stack
 
 ## Removals, deprecations, and syntax changes
-   * remove `dpcpp` compiler and package (#43418)
-   * `spack load`: remove --only argument (#42120)
+* remove `dpcpp` compiler and package (#43418)
+* spack load: remove --only argument (#42120)
 
 ## Notable Bugfixes
-   * repo.py: drop deleted packages from provider cache (#43779)
-   * Allow `+` in module file names (#41999)
-   * `cmd/python`: use runpy to allow multiprocessing in scripts (#41789)
-   * Show extension commands with spack -h (#41726)
-   * Support environment variable expansion inside module projections (#42917)
-   * Alert user to failed concretizations (#42655)
-   * shell: fix zsh color formatting for PS1 in environments (#39497)
-   * spack mirror create --all: include patches (#41579)
+* repo.py: drop deleted packages from provider cache (#43779)
+* Allow `+` in module file names (#41999)
+* `cmd/python`: use runpy to allow multiprocessing in scripts (#41789)
+* Show extension commands with spack -h (#41726)
+* Support environment variable expansion inside module projections (#42917)
+* Alert user to failed concretizations (#42655)
+* shell: fix zsh color formatting for PS1 in environments (#39497)
+* spack mirror create --all: include patches (#41579)
 
 ## Spack community stats
 
@@ -313,7 +318,6 @@
 * 358 people contributed to this release
     * 344 committers to packages
     * 45 committers to core
-
 
 # v0.21.2 (2024-03-01)
 

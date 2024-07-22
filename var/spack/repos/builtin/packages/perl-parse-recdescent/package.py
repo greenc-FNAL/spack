@@ -23,4 +23,6 @@ class PerlParseRecdescent(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/J/JT/JTBRAUN/Parse-RecDescent-1.967014.tar.gz",
     )
 
+    depends_on("c", type="build")  # generated
+
     depends_on("perl-module-build", type="build")
