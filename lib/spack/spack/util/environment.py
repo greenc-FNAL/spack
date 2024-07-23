@@ -19,10 +19,6 @@ from llnl.path import path_to_os_path, system_path_filter
 from llnl.util import tty
 from llnl.util.lang import dedupe
 
-import spack.platforms
-import spack.spec
-import spack.target
-
 from .executable import Executable, which
 
 if sys.platform == "win32":
@@ -122,21 +118,20 @@ def filter_system_paths(paths: List[Path]) -> List[Path]:
 target_64bit_re = re.compile(r"(?<!\d)64(?=\D|$)")
 
 
-def deprioritize_system_paths(
-    paths: List[Path], target: Optional[Union[str, spack.target.Target]] = None
-) -> List[Path]:
+def deprioritize_system_paths(paths: List[Path], target: Optional[str] = None) -> List[Path]:
     """Reorders input paths by putting system paths at the end of the list, otherwise
     preserving order.
     """
+    import spack.platforms
+    import spack.target
+
     result = sorted(paths, key=is_system_path)
     # If we are building for a 64-bit target, move e.g. *64 system paths to
     # the front of the system paths; otherwise remove them
     if target is None:
         ref_target = spack.platforms.host().target("default_target")
-    elif not isinstance(target, spack.target.Target):
-        ref_target = spack.target.Target(target)
     else:
-        ref_target = target
+        ref_target = spack.target.Target(target)
     if target_64bit_re.search(ref_target.microarchitecture.family.name):
         result.sort(key=lambda path: is_system_path(path) and not path.endswith("64"))
     else:
@@ -442,7 +437,7 @@ class DeprioritizeSystemPaths(NameModifier):
         *,
         separator: str = os.pathsep,
         trace: Optional[Trace] = None,
-        target: Optional[Union[str, spack.target.Target]] = None,
+        target: Optional[str] = None,
     ):
         super().__init__(name, separator=separator, trace=trace)
         self.target = target
@@ -628,10 +623,7 @@ class EnvironmentModifications:
 
     @system_env_normalize
     def deprioritize_system_paths(
-        self,
-        name: str,
-        separator: str = os.pathsep,
-        target: Optional[Union[str, spack.target.Target]] = None,
+        self, name: str, separator: str = os.pathsep, target: Optional[str] = None
     ):
         """Stores a request to deprioritize system paths in a path list,
         otherwise preserving the order.
