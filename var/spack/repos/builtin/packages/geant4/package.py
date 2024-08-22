@@ -87,7 +87,28 @@ class Geant4(CMakePackage):
     depends_on("cmake@3.8:", type="build", when="@10.6.0:")
     depends_on("cmake@3.5:", type="build")
 
-    depends_on("geant4-data", type="run", version_translator=spack.version.ver)
+    for _vers in [
+        "10.0.4",
+        "10.3.3",
+        "10.4.0",
+        "10.4.3",
+        "10.5.1",
+        "10.6.0",
+        "10.6.1",
+        "10.6.2",
+        "10.6.3",
+        "10.7.0",
+        "10.7.1",
+        "10.7.2",
+        "10.7.3",
+        "10.7.4",
+        "11.0",
+        "11.1",
+        "11.2.0:11.2.1",
+        "11.2.2:11.2",
+        "11.3:",
+    ]:
+        depends_on("geant4-data@" + _vers, type="run", when="@" + _vers)
 
     depends_on("expat")
     depends_on("zlib-api")
