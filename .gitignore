@@ -18,6 +18,17 @@ spack-db.*
 *.in.log
 *.out.log
 
+#########################
+# FNAL-specific ignores #
+#########################
+
+var/spack/extensions
+var/spack/repos/artdaq-spack/
+var/spack/repos/fnal_art/
+var/spack/repos/larsoft-spack-recipes/
+var/spack/repos/nusofthep-spack-recipes/
+var/spack/repos/scd_recipes/
+
 ###########################
 # Python-specific ignores #
 ###########################
