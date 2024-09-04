@@ -3,8 +3,6 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
-import inspect
-
 from spack.package import *
 
 
@@ -78,13 +76,13 @@ class PerlBioperl(PerlPackage):
     depends_on("perl-libwww-perl", when="@1.7.6:", type=("build", "run"))
     depends_on("perl-libxml-perl", when="@1.7.6:", type=("build", "run"))
 
+    @when("@1.007002")
+    def configure(self, spec, prefix):
+        # Overriding default configure method in order to cater to interactive
+        # Build.pl
+        self.build_method = "Build.PL"
+        self.build_executable = Executable(join_path(self.stage.source_path, "Build"))
 
-class PerlBuilder(spack.build_systems.perl.PerlBuilder):
-    class _WrappedExecutable(Executable):
-        def __init__(self, executable):
-            super(PerlBuilder._WrappedExecutable, self).__init__(executable.path)
-
-        def __call__(self, *args, **kwargs):
             # Config questions consist of:
             #    Do you want to run the Bio::DB::GFF or Bio::DB::SeqFeature::Store
             #        live database tests? y/n [n]
@@ -97,21 +95,24 @@ class PerlBuilder(spack.build_systems.perl.PerlBuilder):
             #
             # Eventually, someone can add capability for the other options, but
             # the current answers are the most practical for a spack install.
+
             config_answers = ["n\n", "a\n", "n\n"]
             config_answers_filename = "spack-config.in"
 
             with open(config_answers_filename, "w") as f:
                 f.writelines(config_answers)
 
-            with open(config_answers_filename, "r") as f:
-                super(PerlBuilder._WrappedExecutable, self).__call__(*args, **kwargs, input=f)
+        with open(config_answers_filename, "r") as f:
+            perl("Build.PL", "--install_base=%s" % self.prefix, input=f)
+
+    # Need to also override the build and install methods to make sure that the
+    # Build script is run through perl and not use the shebang, as it might be
+    # too long. This is needed because this does not pick up the
+    # `@run_after(configure)` step defined in `PerlPackage`.
+    @when("@1.007002")
+    def build(self, spec, prefix):
+        perl("Build")
 
     @when("@1.007002")
-    def configure(self, pkg, spec, prefix):
-        perl_safe = inspect.getmodule(self).perl
-        inspect.getmodule(self).perl = PerlBuilder._WrappedExecutable(perl_safe)
-
-        try:
-            super(PerlBuilder, self).configure(pkg, spec, prefix)
-        finally:
-            inspect.getmodule(self).perl = perl_safe
+    def install(self, spec, prefix):
+        perl("Build", "install")
