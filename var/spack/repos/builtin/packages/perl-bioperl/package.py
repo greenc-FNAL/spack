@@ -83,24 +83,24 @@ class PerlBioperl(PerlPackage):
         self.build_method = "Build.PL"
         self.build_executable = Executable(join_path(self.stage.source_path, "Build"))
 
-            # Config questions consist of:
-            #    Do you want to run the Bio::DB::GFF or Bio::DB::SeqFeature::Store
-            #        live database tests? y/n [n]
-            #
-            #    Install [a]ll BioPerl scripts, [n]one, or choose groups
-            #        [i]nteractively? [a]
-            #
-            #    Do you want to run tests that require connection to servers across
-            #        the internet (likely to cause some failures)? y/n [n]
-            #
-            # Eventually, someone can add capability for the other options, but
-            # the current answers are the most practical for a spack install.
+        # Config questions consist of:
+        #    Do you want to run the Bio::DB::GFF or Bio::DB::SeqFeature::Store
+        #        live database tests? y/n [n]
+        #
+        #    Install [a]ll BioPerl scripts, [n]one, or choose groups
+        #        [i]nteractively? [a]
+        #
+        #    Do you want to run tests that require connection to servers across
+        #        the internet (likely to cause some failures)? y/n [n]
+        #
+        # Eventually, someone can add capability for the other options, but
+        # the current answers are the most practical for a spack install.
 
-            config_answers = ["n\n", "a\n", "n\n"]
-            config_answers_filename = "spack-config.in"
+        config_answers = ["n\n", "a\n", "n\n"]
+        config_answers_filename = "spack-config.in"
 
-            with open(config_answers_filename, "w") as f:
-                f.writelines(config_answers)
+        with open(config_answers_filename, "w") as f:
+            f.writelines(config_answers)
 
         with open(config_answers_filename, "r") as f:
             perl("Build.PL", "--install_base=%s" % self.prefix, input=f)

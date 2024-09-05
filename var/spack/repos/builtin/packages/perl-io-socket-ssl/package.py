@@ -52,7 +52,6 @@ class PerlIoSocketSsl(PerlPackage):
     depends_on("perl-mozilla-ca", type="run")
     depends_on("perl-net-ssleay@1.46:", type="run")
 
-
     def configure(self, spec, prefix):
         self.build_method = "Makefile.PL"
         self.build_executable = make
