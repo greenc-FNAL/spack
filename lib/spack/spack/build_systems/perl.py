@@ -2,7 +2,6 @@
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
-import inspect
 import os
 import re
 from typing import Iterable
@@ -137,7 +136,7 @@ class PerlBuilder(BaseBuilder):
     def build_executable(self):
         """Returns the executable method to build the perl package"""
         if self.build_method == "Makefile.PL":
-            build_executable = inspect.getmodule(self.pkg).make
+            build_executable = self.pkg.module.make
         elif self.build_method == "Build.PL":
             build_executable = Executable(os.path.join(self.pkg.stage.source_path, "Build"))
         return build_executable
@@ -161,7 +160,7 @@ class PerlBuilder(BaseBuilder):
             options = ["Build.PL", "--install_base", prefix]
         options += self.configure_args()
 
-        inspect.getmodule(self.pkg).perl(*options)
+        pkg.module.perl(*options)
 
     def fetch_remote_versions(self, concurrency=128):
         """Handle unfortunate versions."""

@@ -32,7 +32,6 @@ import spack.compilers
 import spack.config
 import spack.config as sc
 import spack.deptypes as dt
-import spack.directives
 import spack.environment as ev
 import spack.error
 import spack.package_base
@@ -580,7 +579,7 @@ def _is_checksummed_version(version_info: Tuple[GitOrStandardVersion, dict]):
     return _is_checksummed_git_version(version)
 
 
-def _concretization_version_order(version_info: Tuple[GitOrStandardVersion, dict]):
+def concretization_version_order(version_info: Tuple[GitOrStandardVersion, dict]):
     """Version order key for concretization, where preferred > not preferred,
     not deprecated > deprecated, finite > any infinite component; only if all are
     the same, do we use default version ordering."""
@@ -1679,6 +1678,10 @@ class SpackSolverSetup:
             if pkg_name not in spack.repo.PATH:
                 continue
 
+            # This package is not among possible dependencies
+            if pkg_name not in self.pkgs:
+                continue
+
             # Check if the external package is buildable. If it is
             # not then "external(<pkg>)" is a fact, unless we can
             # reuse an already installed spec.
@@ -1878,8 +1881,7 @@ class SpackSolverSetup:
 
                 # validate variant value only if spec not concrete
                 if not spec.concrete:
-                    reserved_names = spack.directives.reserved_names
-                    if not spec.virtual and vname not in reserved_names:
+                    if not spec.virtual and vname not in spack.variant.reserved_names:
                         pkg_cls = self.pkg_class(spec.name)
                         try:
                             variant_def, _ = pkg_cls.variants[vname]
@@ -2028,7 +2030,7 @@ class SpackSolverSetup:
             # like being a "develop" version or being preferred exist only at a
             # package.py level, sort them in this partial list here
             package_py_versions = sorted(
-                pkg_cls.versions.items(), key=_concretization_version_order, reverse=True
+                pkg_cls.versions.items(), key=concretization_version_order, reverse=True
             )
 
             if require_checksum and pkg_cls.has_code:
@@ -3346,7 +3348,6 @@ class SpecBuilder:
         self._result = None
         self._command_line_specs = specs
         self._flag_sources = collections.defaultdict(lambda: set())
-        self._flag_compiler_defaults = set()
 
         # Pass in as arguments reusable specs and plug them in
         # from this dictionary during reconstruction
@@ -3403,9 +3404,6 @@ class SpecBuilder:
     def node_compiler_version(self, node, compiler, version):
         self._specs[node].compiler = spack.spec.CompilerSpec(compiler)
         self._specs[node].compiler.versions = vn.VersionList([vn.Version(version)])
-
-    def node_flag_compiler_default(self, node):
-        self._flag_compiler_defaults.add(node)
 
     def node_flag(self, node, flag_type, flag):
         self._specs[node].compiler_flags.add_flag(flag_type, flag, False)
