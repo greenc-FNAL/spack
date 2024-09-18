@@ -270,13 +270,12 @@ class Openblas(CMakePackage, MakefilePackage):
 
     def flag_handler(self, name, flags):
         spec = self.spec
-        iflags = []
         if name == "cflags":
             if spec.satisfies("@0.3.20: %oneapi") or spec.satisfies("@0.3.20: %arm"):
-                iflags.append("-Wno-error=implicit-function-declaration")
+                flags.append("-Wno-error=implicit-function-declaration")
             if spec.satisfies("~fortran %clang"):
-                iflags.append("-Wno-error=int-conversion")
-        return (iflags, None, None)
+                flags.append("-Wno-error=int-conversion")
+        return (flags, None, None)
 
     @classmethod
     def determine_version(cls, lib):

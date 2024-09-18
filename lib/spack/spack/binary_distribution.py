@@ -33,7 +33,6 @@ from llnl.util.filesystem import BaseDirectoryVisitor, mkdirp, visit_directory_t
 from llnl.util.symlink import readlink
 
 import spack.caches
-import spack.cmd
 import spack.config as config
 import spack.database as spack_db
 import spack.error
@@ -44,9 +43,9 @@ import spack.mirror
 import spack.oci.image
 import spack.oci.oci
 import spack.oci.opener
+import spack.paths
 import spack.platforms
 import spack.relocate as relocate
-import spack.repo
 import spack.spec
 import spack.stage
 import spack.store
@@ -54,6 +53,7 @@ import spack.user_environment
 import spack.util.archive
 import spack.util.crypto
 import spack.util.file_cache as file_cache
+import spack.util.filesystem as ssys
 import spack.util.gpg
 import spack.util.parallel
 import spack.util.path
@@ -687,7 +687,7 @@ def get_buildfile_manifest(spec):
     # Non-symlinks.
     for rel_path in visitor.files:
         abs_path = os.path.join(root, rel_path)
-        m_type, m_subtype = fsys.mime_type(abs_path)
+        m_type, m_subtype = ssys.mime_type(abs_path)
 
         if relocate.needs_binary_relocation(m_type, m_subtype):
             # Why is this branch not part of needs_binary_relocation? :(
@@ -1446,7 +1446,9 @@ def _oci_push_pkg_blob(
     filename = os.path.join(tmpdir, f"{spec.dag_hash()}.tar.gz")
 
     # Create an oci.image.layer aka tarball of the package
-    compressed_tarfile_checksum, tarfile_checksum = spack.oci.oci.create_tarball(spec, filename)
+    compressed_tarfile_checksum, tarfile_checksum = _do_create_tarball(
+        filename, spec.prefix, get_buildinfo_dict(spec)
+    )
 
     blob = spack.oci.oci.Blob(
         Digest.from_sha256(compressed_tarfile_checksum),

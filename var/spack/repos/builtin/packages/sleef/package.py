@@ -70,12 +70,9 @@ class Sleef(CMakePackage):
         return self.define(cmake_var, value)
 
     def cmake_args(self):
-        # https://salsa.debian.org/science-team/sleef/-/blob/master/debian/rules
         args = [
-            self.sleef_define("BUILD_DFT", False),
-            self.sleef_define("BUILD_SHARED_LIBS", True),
             self.sleef_define("BUILD_TESTS", self.run_tests),
-            self.sleef_define("TEST_ALL_IUT", True),
+            self.define("CMAKE_POSITION_INDEPENDENT_CODE", True),
         ]
 
         # https://github.com/shibatch/sleef/issues/474
