@@ -627,6 +627,15 @@ class Llvm(CMakePackage, CudaPackage, LlvmDetection, CompilerPackage):
             string=True,
         )
 
+    @when("@14.0.6")
+    def patch(self):
+        filter_file(
+            r"#include <z3.h>",
+            "#include <z3.h>\n#include<cstdio>",
+            "llvm/cmake/modules/FindZ3.cmake",
+            string=True,
+        )
+
     compiler_version_regex = (
         # Normal clang compiler versions are left as-is
         r"clang version ([^ )\n]+)-svn[~.\w\d-]*|"
