@@ -627,7 +627,7 @@ class Llvm(CMakePackage, CudaPackage, LlvmDetection, CompilerPackage):
             string=True,
         )
 
-    patch('llvm-cmake-modules-FindZ3.patch', when="@14.0.6"):
+    patch('llvm-cmake-modules-FindZ3.patch', when="@14.0.6")
 
     compiler_version_regex = (
         # Normal clang compiler versions are left as-is
