@@ -65,6 +65,6 @@ class Pthreadpool(CMakePackage):
             # https://github.com/pytorch/pytorch/blob/main/cmake/Dependencies.cmake
             self.define("PTHREADPOOL_BUILD_TESTS", False),
             self.define("PTHREADPOOL_BUILD_BENCHMARKS", False),
-            self.define("PTHREADPOOL_LIBRARY_TYPE", "static"),
+            self.define("PTHREADPOOL_LIBRARY_TYPE", "shared"),
             self.define("PTHREADPOOL_ALLOW_DEPRECATED_API", True),
         ]
