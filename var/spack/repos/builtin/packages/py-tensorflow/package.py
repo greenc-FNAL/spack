@@ -459,12 +459,12 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
     )
     phases = ["configure", "build", "install"]
 
-    def patch(self):
-        filter_file(
-            '#include "absl',
-            '#include <cstdint>\n#include "absl',
-            "tensorflow/tsl/platform/stringpiece.h",
-        )
+#    def patch(self):
+#        filter_file(
+#            '#include "absl',
+#            '#include <cstdint>\n#include "absl',
+#            "tensorflow/tsl/platform/stringpiece.h",
+#        )
 
     # https://www.tensorflow.org/install/source
     def setup_build_environment(self, env):
@@ -815,7 +815,7 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
             "--config=opt",
             # Enable verbose output for failures
             "--verbose_failures",
-            "--cxxopt='-std=c++{0}'".format(self.spec.variants["cxxstd"].value),
+            "--cxxopt=-std=c++{0}".format(self.spec.variants["cxxstd"].value),
         ]
 
         if spec.satisfies("^bazel@:3.5"):
