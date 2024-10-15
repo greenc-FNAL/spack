@@ -14,6 +14,7 @@ class PerlHttpCookies(PerlPackage):
 
     license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
+    version("6.11", sha256="8c9a541a4a39f6c0c7e3d0b700b05dfdb830bd490a1b1942a7dedd1b50d9a8c8")
     version("6.10", sha256="e36f36633c5ce6b5e4b876ffcf74787cc5efe0736dd7f487bdd73c14f0bd7007")
     version("6.09", sha256="903f017afaa5b78599cc90efc14ecccc8cc2ebfb636eb8c02f8f16ba861d1fe0")
     version("6.08", sha256="49ebb73576eb41063c04bc079477df094496deec805ae033f3be338c23c3af59")

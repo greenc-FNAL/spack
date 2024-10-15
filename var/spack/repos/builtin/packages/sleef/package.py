@@ -10,7 +10,7 @@ class Sleef(CMakePackage):
     """SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT."""
 
     homepage = "https://sleef.org"
-    url = "https://github.com/shibatch/sleef/archive/3.6.1.tar.gz"
+    url = "https://github.com/shibatch/sleef/archive/3.7.tar.gz"
     git = "https://github.com/shibatch/sleef.git"
 
     maintainers("blapie")
@@ -18,7 +18,8 @@ class Sleef(CMakePackage):
     license("BSL-1.0")
 
     version("master", branch="master")
-    version("3.6.1", commit="6ee14bcae5fe92c2ff8b000d5a01102dab08d774", preferred=True)
+    version("3.7.0", commit="c5494730bf601599a55f4e77f357b51ba590585e", preferred=True)
+    version("3.6.1", commit="6ee14bcae5fe92c2ff8b000d5a01102dab08d774")
     version("3.6.0_2024-03-20", commit="60e76d2bce17d278b439d9da17177c8f957a9e9b")  # py-torch@2.4:
     version("3.6.0", commit="a99491afee2bae0b11e9ffbf3211349f43a5fd10")
     version(
@@ -70,12 +71,9 @@ class Sleef(CMakePackage):
         return self.define(cmake_var, value)
 
     def cmake_args(self):
-        # https://salsa.debian.org/science-team/sleef/-/blob/master/debian/rules
         args = [
-            self.sleef_define("BUILD_DFT", False),
-            self.sleef_define("BUILD_SHARED_LIBS", True),
             self.sleef_define("BUILD_TESTS", self.run_tests),
-            self.sleef_define("TEST_ALL_IUT", True),
+            self.define("CMAKE_POSITION_INDEPENDENT_CODE", True),
         ]
 
         # https://github.com/shibatch/sleef/issues/474
