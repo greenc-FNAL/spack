@@ -14,6 +14,7 @@ class PerlIoSocketSsl(PerlPackage):
 
     license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
+    version("2.089", sha256="f683112c1642967e9149f51ad553eccd017833b2f22eb23a9055609d2e3a14d1")
     version("2.085", sha256="95b2f7c0628a7e246a159665fbf0620d0d7835e3a940f22d3fdd47c3aa799c2e")
     version("2.074", sha256="36486b6be49da4d029819cf7069a7b41ed48af0c87e23be0f8e6aba23d08a832")
     version("2.073", sha256="b2c0b34df97cb1aa816221cee2454a1efd89b86ccbda810389a30e0d08cf57c8")

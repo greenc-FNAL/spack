@@ -103,10 +103,7 @@ class Clhep(CMakePackage):
 
     def cmake_args(self):
         cmake_args = [
-            "-DCLHEP_BUILD_CXXSTD=-std=c++{0}".format(self.spec.variants["cxxstd"].value),
-            "-DCMAKE_CXX_COMPILER={0}".format(self.compiler.cxx_names[0]),
-            "-DCMAKE_C_COMPILER={0}".format(self.compiler.cc_names[0]),
-            "-DCMAKE_Fortran_COMPILER={0}".format(self.compiler.f77_names[0]),
+            "-DCLHEP_BUILD_CXXSTD=-std=c++{0}".format(self.spec.variants["cxxstd"].value)
         ]
 
         if not ("build_type=Debug" in self.spec):
