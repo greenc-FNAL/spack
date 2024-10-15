@@ -466,7 +466,7 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
     patch(
         "https://raw.githubusercontent.com/getsolus/packages/dfc56ba57a8af8233a635e309b499ff5d27992f4/packages/t/tensorflow/files/fix-clang-18.diff",
         sha256="10d730b59284843d6c9ba92668b068582e51d5cdfc7ccfe8e26791ad0f41d4ac",
-        when="2.15.0"
+        when="@2.15.0"
     )
     phases = ["configure", "build", "install"]
 
