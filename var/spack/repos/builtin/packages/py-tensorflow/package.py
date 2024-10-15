@@ -459,14 +459,16 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
     )
     # Fix for compiling with clang 18 which produces the following error
     # See https://github.com/tensorflow/tensorflow/issues/62416
-    # ld.lld: error: version script assignment of 'global' to symbol 'init_pywrap_tf2' failed: symbol not defined
-    # ld.lld: error: version script assignment of 'global' to symbol 'init__pywrap_tf2' failed: symbol not defined
+    # ld.lld: error: version script assignment of 'global' to symbol 'init_pywrap_tf2' failed:
+    # symbol not defined
+    # ld.lld: error: version script assignment of 'global' to symbol 'init__pywrap_tf2' failed:
+    # symbol not defined
     # clang: error: linker command failed with exit code 1 (use -v to see invocation)
     # Target //tensorflow/tools/pip_package:build_pip_package failed to build
     patch(
         "https://raw.githubusercontent.com/getsolus/packages/dfc56ba57a8af8233a635e309b499ff5d27992f4/packages/t/tensorflow/files/fix-clang-18.diff",
         sha256="10d730b59284843d6c9ba92668b068582e51d5cdfc7ccfe8e26791ad0f41d4ac",
-        when="@2.15.0"
+        when="@2.15.0",
     )
     phases = ["configure", "build", "install"]
 

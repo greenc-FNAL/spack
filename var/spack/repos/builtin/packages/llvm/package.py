@@ -635,7 +635,7 @@ class Llvm(CMakePackage, CudaPackage, LlvmDetection, CompilerPackage):
 
     patch("sanitizer-platform-limits-posix-xdr-macos.patch", when="@10:14 platform=darwin")
 
-    patch("llvm-cmake-modules-FindZ3.patch", level=0,  when="@14.0.6")
+    patch("llvm-cmake-modules-FindZ3.patch", level=0, when="@14.0.6")
 
     @when("@14:17")
     def patch(self):
@@ -646,7 +646,6 @@ class Llvm(CMakePackage, CudaPackage, LlvmDetection, CompilerPackage):
             "lldb/source/Core/CMakeLists.txt",
             string=True,
         )
-
 
     compiler_version_regex = (
         # Normal clang compiler versions are left as-is
