@@ -29,15 +29,12 @@ class Ftgl(CMakePackage):
         description="C++ standard",
     )
 
-    depends_on("c", type="build")  # generated
-    depends_on("cxx", type="build")  # generated
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
 
-    # FIXME: Doc generation is broken in upstream build system
-    # variant('doc', default=False, description='Build the documentation')
     variant("shared", default=True, description="Build as a shared library")
 
     depends_on("cmake@2.8:", type="build")
-    # depends_on('doxygen', type='build', when='+doc')  -- FIXME, see above
     depends_on("pkgconfig", type="build")
     depends_on("gl")
     depends_on("glu")
@@ -45,11 +42,14 @@ class Ftgl(CMakePackage):
 
     # Fix oversight in CMakeLists
     patch("remove-ftlibrary-from-sources.diff", when="@:2.4.0")
-    # Fix gcc14 compilation error due to type mismatch in FTContour
+
+    # As reported by Khem Raj in
+    # https://github.com/kraj/ftgl/commit/37ed7d606a0dfecdcb4ab0c26d1b0132cd96d5fa
+    # freetype 2.13.3 changed the type of many external chars to unsigned char!
     patch(
         "https://patch-diff.githubusercontent.com/raw/frankheckenbach/ftgl/pull/20.patch?full_index=1",
         sha256="e2a0810fbf68403931bef4fbfda22e010e01421c92eeaa45f62e4e47f2381ebd",
-        when="@2.4.0 %gcc@14:",
+        when="^freetype@2.13.3:",
     )
 
     # ftgl (at least up to 2.4.0) uses `cmake_minimum_version(2.8)`,
@@ -63,11 +63,18 @@ class Ftgl(CMakePackage):
                 flags.append(eval(flag_func_name, {}, {"self": self}))
         return (None, None, flags)
 
-    def cmake_flags(self):
-        flags = [self.define_from_variant("BUILD_SHARED_LIBS", "shared")]
-        if "darwin" in self.spec.architecture:
-            flags.append(self.define("CMAKE_MACOSX_RPATH", True))
-        return flags
+    def cmake_args(self):
+        spec = self.spec
+        args = ["-DBUILD_SHARED_LIBS={0}".format(spec.satisfies("+shared"))]
+
+        # To not fail the build for 'char/unsigned char' conversion errors,
+        # downgrade them to warnings in general to not fail the build:
+        args.append("-DCMAKE_CXX_FLAGS=-fpermissive")
+
+        if "darwin" in spec.architecture:
+            args.append(self.define("CMAKE_MACOSX_RPATH", True))
+
+        return args
 
     # FIXME: See doc variant comment
     # @run_after('build')
