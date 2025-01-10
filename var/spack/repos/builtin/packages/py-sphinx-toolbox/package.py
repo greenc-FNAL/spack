@@ -15,6 +15,7 @@ class PySphinxToolbox(PythonPackage):
 
     license("MIT")
 
+    version("3.8.1", sha256="a4b39a6ea24fc8f10e24f052199bda17837a0bf4c54163a56f521552395f5e1a")
     version("3.5.0", sha256="e5b5a7153f1997572d71a06aaf6cec225483492ec2c60097a84f15aad6df18b7")
     version("3.4.0", sha256="e1cf2a3dea5ce80e175a6a9cee8b5b2792240ecf6c28993d87a63b6fcf606293")
 
@@ -50,8 +51,8 @@ class PySphinxToolbox(PythonPackage):
         depends_on("py-tabulate@0.8.7:", type=("build", "run"))
 
     with when("@:3.4.0"):
-        depends_on("py-typing-inspect@0.6.0:", when="^python@:3.7", type=("build", "run"))
         depends_on("py-coincidence@0.4.3:", type="test")
         depends_on("py-pygments@2.7.4:2.13.0", type="test")
 
+    depends_on("py-typing-inspect@0.6.0:", when="^python@:3.7", type=("build", "run"))
     depends_on("py-typing-extensions@3.7.4.3:3.10.0.0,3.10.0.2:", type=("build", "run"))
