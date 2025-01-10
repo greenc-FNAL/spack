@@ -29,4 +29,5 @@ class PySphinxTabs(PythonPackage):
     depends_on("py-pygments", type=("build", "run"))
     depends_on("py-docutils@0.16", when="@3.2.0", type=("build", "run"))
     depends_on("py-docutils@0.17", when="@3.3.1", type=("build", "run"))
-    depends_on("py-docutils@0.18", when="@3.4.1:", type=("build", "run"))
+    depends_on("py-docutils@0.18", when="@3.4.1:3.4.4", type=("build", "run"))
+    depends_on("py-docutils", when="@3.4.5:", type=("build", "run"))
