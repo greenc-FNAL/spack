@@ -11,6 +11,8 @@ class PerlHtmlForm(PerlPackage):
     homepage = "https://github.com/libwww-perl/HTML-Form"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/HTML-Form-6.10.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("6.10", sha256="df8393e35e495a0839f06a63fb65d6922842c180d260554137728a9f092df9d3")

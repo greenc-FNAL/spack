@@ -11,6 +11,8 @@ class PerlDevelCaller(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/R/RC/RCLAMP"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/Devel-Caller-2.06.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("2.06", sha256="6a73ae6a292834255b90da9409205425305fcfe994b148dcb6d2d6ef628db7df")

@@ -11,6 +11,8 @@ class PerlCriticism(PerlPackage):
     homepage = "http://perlcritic.com"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/T/TH/THALJEF/criticism/criticism-1.02.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.02", sha256="962a1e8602621118d8b031283cc1220561d166894ce206d9d0ecf0049dd83975")

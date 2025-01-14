@@ -11,6 +11,8 @@ class PerlTextTestbase(PerlPackage):
     homepage = "https://github.com/tokuhirom/Text-TestBase"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Text-TestBase-0.13.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.13", sha256="25a512d6f64099607bef799a58516524fdbe6e9a458959a4747c4d7443c4d2fa")

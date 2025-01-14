@@ -11,6 +11,8 @@ class PerlWwwMechanize(PerlPackage):
     homepage = "https://github.com/libwww-perl/WWW-Mechanize"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/WWW-Mechanize-2.15.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("2.15", sha256="91d0dc3235027d19fc485e93833ec92497bc508e31d391eb07ee664f988ca9b3")

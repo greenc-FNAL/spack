@@ -11,6 +11,8 @@ class PerlPerlCriticPulp(PerlPackage):
     homepage = "http://user42.tuxfamily.org/perl-critic-pulp/index.html"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/K/KR/KRYDE/Perl-Critic-Pulp-99.tar.gz"
 
+    license("GPL-3.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("99", sha256="b8fda842fcbed74d210257c0a284b6dc7b1d0554a47a3de5d97e7d542e23e7fe")

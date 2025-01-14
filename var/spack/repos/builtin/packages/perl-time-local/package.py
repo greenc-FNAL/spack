@@ -11,6 +11,8 @@ class PerlTimeLocal(PerlPackage):
     homepage = "http://metacpan.org/release/Time-Local"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Time-Local-1.30.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version(

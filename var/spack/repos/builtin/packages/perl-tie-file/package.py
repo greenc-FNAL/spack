@@ -11,6 +11,8 @@ class PerlTieFile(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/T/TO/TODDR"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/T/TO/TODDR/Tie-File-1.05.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-2.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.05", sha256="8a980b577ff4b10fe11062ed8c774857fa8c9833c5305f2e8bfb3347af63f139")

@@ -11,6 +11,8 @@ class PerlPodMinimumversion(PerlPackage):
     homepage = "http://user42.tuxfamily.org/pod-minimumversion/index.html"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/K/KR/KRYDE/Pod-MinimumVersion-50.tar.gz"
 
+    license("GPL-3.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("50", sha256="0bd2812d9aacbd99bb71fa103a4bb129e955c138ba7598734207dc9fb67b5a6f")

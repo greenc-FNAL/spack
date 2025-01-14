@@ -11,6 +11,8 @@ class PerlTypeTie(PerlPackage):
     homepage = "https://metacpan.org/release/Type-Tie"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Type-Tie-0.015.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.015", sha256="4e5a3f6737efd59b4e395af2f95d02e564fc57aa723e32a13eb2a1788d6d5434")

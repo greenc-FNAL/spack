@@ -11,6 +11,8 @@ class PerlHtmlTree(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/K/KE/KENTNL"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/K/KE/KENTNL/HTML-Tree-5.07.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version(

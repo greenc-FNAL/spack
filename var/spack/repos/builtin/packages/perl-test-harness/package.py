@@ -11,6 +11,8 @@ class PerlTestHarness(PerlPackage):
     homepage = "http://testanything.org/"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/L/LE/LEONT/Test-Harness-3.44.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("3.44", sha256="7eb591ea6b499ece6745ff3e80e60cee669f0037f9ccbc4e4511425f593e5297")

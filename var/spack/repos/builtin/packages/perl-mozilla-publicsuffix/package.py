@@ -16,6 +16,8 @@ class PerlMozillaPublicsuffix(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/T/TO/TOMHUKINS"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/T/TO/TOMHUKINS/Mozilla-PublicSuffix-v1.0.6.tar.gz"
 
+    license("MIT", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.0.6", sha256="a3bc115d6a59fb7bf23b539fb7b95e4ee06850fab884e2d12dd98dc545f9ebd8")

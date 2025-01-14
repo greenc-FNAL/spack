@@ -11,6 +11,8 @@ class PerlHttpTinyMech(PerlPackage):
     homepage = "https://github.com/kentnl/HTTP-Tiny-Mech"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/K/KE/KENTNL/HTTP-Tiny-Mech-1.001002.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version(

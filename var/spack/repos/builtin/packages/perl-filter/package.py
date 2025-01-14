@@ -11,6 +11,8 @@ class PerlFilter(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/R/RU/RURBAN"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/R/RU/RURBAN/Filter-1.64.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.64", sha256="13e7fb7e1d326598e3660103cf1974bee9f690ac5b43b339f2c022f2b5fcef2c")

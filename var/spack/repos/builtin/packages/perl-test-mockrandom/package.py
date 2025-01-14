@@ -11,6 +11,8 @@ class PerlTestMockrandom(PerlPackage):
     homepage = "https://github.com/dagolden/Test-MockRandom"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Test-MockRandom-1.01.tar.gz"
 
+    license("Apache-2.0", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.01", sha256="2614930d84fc5deac39afbc1ee86ccd39b221507f27d4ee493ca26e5c921cce0")

@@ -11,6 +11,8 @@ class PerlHtmlFormatter(PerlPackage):
     homepage = "https://metacpan.org/release/HTML-Formatter"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/N/NI/NIGELM/HTML-Formatter-2.16.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("2.16", sha256="cb0a0dd8aa5e8ba9ca214ce451bf4df33aa09c13e907e8d3082ddafeb30151cc")

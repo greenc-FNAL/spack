@@ -14,6 +14,8 @@ class PerlPerlCriticCompatibility(PerlPackage):
         "https://cpan.metacpan.org/authors/id/E/EL/ELLIOTJS/Perl-Critic-Compatibility-1.001.tar.gz"
     )
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.001", sha256="6d45c8778fa9315f1ba21f99ea95ed1f48b66d9616b7ba7810df6af4a27f9b32")

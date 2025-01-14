@@ -11,6 +11,8 @@ class PerlFileNext(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/P/PE/PETDANCE"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/File-Next-1.18.tar.gz"
 
+    license("Artistic-2.0", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.18", sha256="f900cb39505eb6e168a9ca51a10b73f1bbde1914b923a09ecd72d9c02e6ec2ef")

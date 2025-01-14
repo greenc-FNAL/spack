@@ -11,6 +11,8 @@ class PerlAttributeHandlers(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/R/RJ/RJBS"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Attribute-Handlers-0.99.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.99", sha256="937ea3ebfc9b14f4a4148bf3c32803709edbd12a387137a26370b38ee1fc9835")

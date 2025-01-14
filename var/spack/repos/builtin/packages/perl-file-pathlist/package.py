@@ -11,6 +11,8 @@ class PerlFilePathlist(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/A/AD/ADAMK"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/A/AD/ADAMK/File-PathList-1.04.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.04", sha256="e3e2799f3bceeae4992fe31ea892c34e9141f9237598cfadbc89824ede7a662c")

@@ -11,6 +11,8 @@ class PerlClassAccessorLite(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/K/KA/KAZUHO"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/K/KA/KAZUHO/Class-Accessor-Lite-0.08.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.08", sha256="75b3b8ec8efe687677b63f0a10eef966e01f60735c56656ce75cbb44caba335a")

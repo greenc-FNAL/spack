@@ -11,6 +11,8 @@ class PerlAck(PerlPackage):
     homepage = "https://beyondgrep.com/"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/ack-v3.6.0.tar.gz"
 
+    license("Artistic-2.0", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("3.6.0", sha256="03144d1070649e92f6a1b7d20bdc535e2bb1ac258daabe482e9aa8277b48f005")

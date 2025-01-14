@@ -11,6 +11,8 @@ class PerlConfigAutoconf(PerlPackage):
     homepage = "https://metacpan.org/release/Config-AutoConf"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/A/AM/AMBS/Config-AutoConf-0.320.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.320", sha256="bb57a958ef49d3f7162276dae14a7bd5af43fd1d8513231af35d665459454023")

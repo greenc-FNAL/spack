@@ -11,6 +11,8 @@ class PerlTestPerlCriticProgressive(PerlPackage):
     homepage = "http://perlcritic.com"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/T/TH/THALJEF/Test-Perl-Critic-Progressive-0.03.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.03", sha256="665d717b4a4c35077b703115090aaa64f24ae12c6193674c8a096f031bc15b36")

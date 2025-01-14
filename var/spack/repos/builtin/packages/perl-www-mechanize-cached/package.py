@@ -11,6 +11,8 @@ class PerlWwwMechanizeCached(PerlPackage):
     homepage = "https://github.com/libwww-perl/WWW-Mechanize-Cached"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/WWW-Mechanize-Cached-1.56.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.56", sha256="a18b0706aac202604adc575b6be6b8ae26b373a9d43d8da59c826d7d300151dd")

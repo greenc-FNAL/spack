@@ -11,6 +11,8 @@ class PerlPerlOstype(PerlPackage):
     homepage = "https://github.com/Perl-Toolchain-Gang/Perl-OSType"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Perl-OSType-1.010.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.010", sha256="e7ed4994b5d547cb23aadb84dc6044c5eb085d5a67a6c5624f42542edd3403b2")

@@ -11,6 +11,8 @@ class PerlFontAfm(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/G/GA/GAAS"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/G/GA/GAAS/Font-AFM-1.20.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.20", sha256="32671166da32596a0f6baacd0c1233825a60acaf25805d79c81a3f18d6088bc1")

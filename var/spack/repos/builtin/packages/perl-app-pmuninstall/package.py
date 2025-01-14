@@ -11,6 +11,8 @@ class PerlAppPmuninstall(PerlPackage):
     homepage = "https://github.com/xaicron/pm-uninstall"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/X/XA/XAICRON/App-pmuninstall-0.33.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.33", sha256="f05a12435124046a2a45bce49f283216797e71fe1b129bcf43b3f04887c89aff")

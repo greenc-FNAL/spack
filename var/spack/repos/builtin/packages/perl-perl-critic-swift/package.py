@@ -11,6 +11,8 @@ class PerlPerlCriticSwift(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/E/EL/ELLIOTJS"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/E/EL/ELLIOTJS/Perl-Critic-Swift-v1.0.3.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.0.3", sha256="eb8a36c11ef75df2ac4428f5311168e3e8425a25f593c271d09de20700f8d89d")

@@ -11,6 +11,8 @@ class PerlLibnet(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/S/SH/SHAY"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/S/SH/SHAY/libnet-3.14.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("3.14", sha256="153c8eb8ef0f19cf2c631d5b45d05de98516937f34e261125ef242fba1fe2ea4")

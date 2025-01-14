@@ -11,6 +11,8 @@ class PerlTextBalanced(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/S/SH/SHAY"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/S/SH/SHAY/Text-Balanced-2.06.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("2.06", sha256="773e0f0f21c0cb2cf664cee6ba28ff70259babcc892f9b650f9cbda00be092ad")

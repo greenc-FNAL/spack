@@ -11,6 +11,8 @@ class PerlDevelPpport(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Devel-PPPort-3.68.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("3.68", sha256="5290d5bb84cde9e9e61113a20c67b5d47267eb8e65a119a8a248cc96aac0badb")

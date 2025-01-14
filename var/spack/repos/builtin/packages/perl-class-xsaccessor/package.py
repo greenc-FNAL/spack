@@ -11,6 +11,8 @@ class PerlClassXsaccessor(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/S/SM/SMUELLER"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/S/SM/SMUELLER/Class-XSAccessor-1.19.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.19", sha256="99c56b395f1239af19901f2feeb125d9ecb4e351a0d80daa9529211a4700a6f2")

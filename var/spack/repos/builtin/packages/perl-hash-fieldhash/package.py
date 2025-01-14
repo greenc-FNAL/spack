@@ -11,6 +11,8 @@ class PerlHashFieldhash(PerlPackage):
     homepage = "https://github.com/gfx/p5-Hash-FieldHash"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/G/GF/GFUJI/Hash-FieldHash-0.15.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.15", sha256="5c515707a5433796a5697b118ddbf1f216d13c5cd52f2b64292e76f7d9b7e8f1")

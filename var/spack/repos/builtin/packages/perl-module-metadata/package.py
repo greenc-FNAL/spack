@@ -11,6 +11,8 @@ class PerlModuleMetadata(PerlPackage):
     homepage = "https://github.com/Perl-Toolchain-Gang/Module-Metadata"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Module-Metadata-1.000037.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version(

@@ -11,6 +11,8 @@ class PerlMathComplex(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/Z/ZE/ZEFRAM/Math-Complex-1.59.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.59", sha256="f35eb4987512c51d2c47294a008ede210d8dd759b90b887d04847c69b42dd6d1")

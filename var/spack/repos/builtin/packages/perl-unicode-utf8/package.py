@@ -11,6 +11,8 @@ class PerlUnicodeUtf8(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/C/CH/CHANSEN"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/Unicode-UTF8-0.62.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.62", sha256="fa8722d0b74696e332fddd442994436ea93d3bfc7982d4babdcedfddd657d0f6")

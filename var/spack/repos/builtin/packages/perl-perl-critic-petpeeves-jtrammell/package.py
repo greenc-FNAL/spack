@@ -13,6 +13,8 @@ class PerlPerlCriticPetpeevesJtrammell(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/J/JT/JTRAMMELL"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/J/JT/JTRAMMELL/Perl-Critic-PetPeeves-JTRAMMELL-0.04.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.04", sha256="fb931eb3434b6b75339d079a469f7a389269df155f46ee5e7cc60c2ebbae4a04")

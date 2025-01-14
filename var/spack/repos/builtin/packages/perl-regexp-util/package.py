@@ -11,6 +11,8 @@ class PerlRegexpUtil(PerlPackage):
     homepage = "https://metacpan.org/release/Regexp-Util"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Regexp-Util-0.005.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.005", sha256="a08871fca2054c464ec6cd663fbdb2fce99cc0346256acf0a4936681ed8a0e00")

@@ -11,6 +11,8 @@ class PerlPerlCriticBangs(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/P/PE/PETDANCE"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Perl-Critic-Bangs-1.12.tar.gz"
 
+    license("Artistic-2.0", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.12", sha256="73242b27da2feb601e4a47e7975d864df7279317f1b0565474be3cfc31bfa119")

@@ -11,6 +11,8 @@ class PerlPerlCriticTics(PerlPackage):
     homepage = "https://github.com/rjbs/Perl-Critic-Tics"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Perl-Critic-Tics-0.009.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.009", sha256="7542662b56622f5d646b00068c8f9befbc16e462228a0cd47d54549d24eb7493")

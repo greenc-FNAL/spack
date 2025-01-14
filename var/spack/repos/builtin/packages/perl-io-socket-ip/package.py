@@ -11,6 +11,8 @@ class PerlIoSocketIp(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/P/PE/PEVANS"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/P/PE/PEVANS/IO-Socket-IP-0.41.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.41", sha256="849a45a238f8392588b97722c850382c4e6d157cd08a822ddcb9073c73bf1446")

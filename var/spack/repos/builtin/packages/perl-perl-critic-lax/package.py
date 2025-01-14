@@ -11,6 +11,8 @@ class PerlPerlCriticLax(PerlPackage):
     homepage = "https://github.com/rjbs/Perl-Critic-Lax"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Perl-Critic-Lax-0.013.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.013", sha256="3f5619c209f93676e2fcdcd2990a27a5d77d2b0e60dcbdcd2680617355fd4620")

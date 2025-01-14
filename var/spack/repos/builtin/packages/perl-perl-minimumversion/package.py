@@ -11,6 +11,8 @@ class PerlPerlMinimumversion(PerlPackage):
     homepage = "https://github.com/neilb/Perl-MinimumVersion"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/D/DB/DBOOK/Perl-MinimumVersion-1.40.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.40", sha256="7589a578cb60d70ca4755c395b3592b440a0cd6a1b074e4eceac93b031a1be90")

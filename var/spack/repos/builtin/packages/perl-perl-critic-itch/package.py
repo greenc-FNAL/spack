@@ -11,6 +11,8 @@ class PerlPerlCriticItch(PerlPackage):
     homepage = "https://cpan.metacpan.org/authors/id/M/MA/MARCELO"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/M/MA/MARCELO/Perl-Critic-Itch-0.07.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.0", sha256="e95dda38dc5120656f01a49b0df34346c9a2d9b03b021f3aeb7dfe5167c2d0c4")

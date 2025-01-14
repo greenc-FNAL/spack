@@ -11,6 +11,8 @@ class PerlFileFindRulePerl(PerlPackage):
     homepage = "https://github.com/karenetheridge/File-Find-Rule-Perl"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-Find-Rule-Perl-1.16.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.16", sha256="ae1886050d9ca21223c073e2870abdc80dc30e3f55289a11c37da3820a8321ff")

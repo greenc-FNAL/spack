@@ -11,6 +11,8 @@ class PerlPerlCriticMore(PerlPackage):
     homepage = "http://perlcritic.com"  # AUTO-CPAN2Spack
     url = "https://cpan.metacpan.org/authors/id/T/TH/THALJEF/Perl-Critic-More-1.003.tar.gz"
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
+
     maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.003", sha256="69e2acff61b7bead745721991e2b83c88624ae8239d4371a785a3ce2d967187b")
