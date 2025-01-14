@@ -11,22 +11,22 @@ from spack.package import *
 
 
 class PerlMozillaPublicsuffix(PerlPackage):
-    """Get a domain name's public suffix via the Mozilla Public Suffix List."""  # AUTO-CPAN2Spack
+    """Get a domain name's public suffix via the Mozilla Public Suffix List."""
 
-    homepage = "https://cpan.metacpan.org/authors/id/T/TO/TOMHUKINS"  # AUTO-CPAN2Spack
+    homepage = "https://cpan.metacpan.org/authors/id/T/TO/TOMHUKINS"
     url = "https://cpan.metacpan.org/authors/id/T/TO/TOMHUKINS/Mozilla-PublicSuffix-v1.0.6.tar.gz"
 
     license("MIT", checked_by="greenc-FNAL")
 
-    maintainers("gartung", "greenc-FNAL", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel")
 
     version("1.0.6", sha256="a3bc115d6a59fb7bf23b539fb7b95e4ee06850fab884e2d12dd98dc545f9ebd8")
     version("1.0.5", sha256="2750fca9335025eaf228a69952dd41a5d361a06b6baca7169865f8de510f3848")
 
     depends_on("perl-module-build", type="build")
 
-    depends_on("perl@5.8:", type=("build", "run"))  # AUTO-CPAN2Spack
-    depends_on("perl-module-build@0.28:", type="build")  # AUTO-CPAN2Spack
+    depends_on("perl@5.8:", type=("build", "run"))
+    depends_on("perl-module-build@0.28:", type="build")
     depends_on("perl-uri")
 
     def patch(self):

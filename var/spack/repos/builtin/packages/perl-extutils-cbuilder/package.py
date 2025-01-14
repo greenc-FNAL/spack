@@ -6,14 +6,14 @@ from spack.package import *
 
 
 class PerlExtutilsCbuilder(PerlPackage):
-    """Compile and link C code for Perl modules."""  # AUTO-CPAN2Spack
+    """Compile and link C code for Perl modules."""
 
-    homepage = "http://search.cpan.org/dist/ExtUtils-CBuilder"  # AUTO-CPAN2Spack
+    homepage = "http://search.cpan.org/dist/ExtUtils-CBuilder"
     url = "https://cpan.metacpan.org/authors/id/A/AM/AMBS/ExtUtils-CBuilder-0.280236.tar.gz"
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("gartung", "greenc-FNAL", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel")
 
     version(
         "0.28.2.36",
@@ -26,19 +26,19 @@ class PerlExtutilsCbuilder(PerlPackage):
         sha256="a0f454d84eb599bf0c11b976ab2ce39ada49bf84c323c7a53fe9f8941ee9378a",
     )
 
-    provides("perl-extutils-cbuilder-base")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-unix")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-vms")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-windows")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-windows-bcc")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-windows-gcc")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-windows-msvc")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-aix")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-android")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-cygwin")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-darwin")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-dec-osf")  # AUTO-CPAN2Spack
-    provides("perl-extutils-cbuilder-platform-os2")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker@6.30:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-perl-ostype@1:", type="run")  # AUTO-CPAN2Spack
+    provides("perl-extutils-cbuilder-base")
+    provides("perl-extutils-cbuilder-platform-unix")
+    provides("perl-extutils-cbuilder-platform-vms")
+    provides("perl-extutils-cbuilder-platform-windows")
+    provides("perl-extutils-cbuilder-platform-windows-bcc")
+    provides("perl-extutils-cbuilder-platform-windows-gcc")
+    provides("perl-extutils-cbuilder-platform-windows-msvc")
+    provides("perl-extutils-cbuilder-platform-aix")
+    provides("perl-extutils-cbuilder-platform-android")
+    provides("perl-extutils-cbuilder-platform-cygwin")
+    provides("perl-extutils-cbuilder-platform-darwin")
+    provides("perl-extutils-cbuilder-platform-dec-osf")
+    provides("perl-extutils-cbuilder-platform-os2")
+    depends_on("perl-extutils-makemaker@6.30:", type="run")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-perl-ostype@1:", type="run")

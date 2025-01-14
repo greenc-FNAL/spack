@@ -6,39 +6,39 @@ from spack.package import *
 
 
 class PerlHtmlFormatter(PerlPackage):
-    """Base class for HTML formatters."""  # AUTO-CPAN2Spack
+    """Base class for HTML formatters."""
 
-    homepage = "https://metacpan.org/release/HTML-Formatter"  # AUTO-CPAN2Spack
+    homepage = "https://metacpan.org/release/HTML-Formatter"
     url = "https://cpan.metacpan.org/authors/id/N/NI/NIGELM/HTML-Formatter-2.16.tar.gz"
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("gartung", "greenc-FNAL", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel")
 
     version("2.16", sha256="cb0a0dd8aa5e8ba9ca214ce451bf4df33aa09c13e907e8d3082ddafeb30151cc")
     version("2.14", sha256="d28eeeab48ab5f7bfcc73cc106b0f756073d98d48dfdb91ca2951f832f8e035e")
 
     depends_on("perl-html-element@3.15:", type=("build", "test"))
-    provides("perl-html-formatmarkdown")  # AUTO-CPAN2Spack
-    provides("perl-html-formatps")  # AUTO-CPAN2Spack
-    provides("perl-html-formatrtf")  # AUTO-CPAN2Spack
-    provides("perl-html-formattext")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-timesbolditalic", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-test-warnings", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-helvetica", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-timesroman", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-html-element@3.15:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-courieroblique", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-helveticaoblique", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-courierboldoblique", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-timesbold", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-helveticabold", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-timesitalic", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-courier", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl@5.8:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-file-slurper", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-courierbold", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-font-metrics-helveticaboldoblique", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-html-treebuilder", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-data-dumper", type="run")  # AUTO-CPAN2Spack
+    provides("perl-html-formatmarkdown")
+    provides("perl-html-formatps")
+    provides("perl-html-formatrtf")
+    provides("perl-html-formattext")
+    depends_on("perl-font-metrics-timesbolditalic", type="run")
+    depends_on("perl-test-warnings", type=("build", "test"))
+    depends_on("perl-font-metrics-helvetica", type="run")
+    depends_on("perl-font-metrics-timesroman", type="run")
+    depends_on("perl-html-element@3.15:", type="run")
+    depends_on("perl-font-metrics-courieroblique", type="run")
+    depends_on("perl-font-metrics-helveticaoblique", type="run")
+    depends_on("perl-font-metrics-courierboldoblique", type="run")
+    depends_on("perl-font-metrics-timesbold", type="run")
+    depends_on("perl-font-metrics-helveticabold", type="run")
+    depends_on("perl-font-metrics-timesitalic", type="run")
+    depends_on("perl-extutils-makemaker", type=("build", "test"))
+    depends_on("perl-font-metrics-courier", type="run")
+    depends_on("perl@5.8:", type="run")
+    depends_on("perl-file-slurper", type=("build", "test"))
+    depends_on("perl-font-metrics-courierbold", type="run")
+    depends_on("perl-font-metrics-helveticaboldoblique", type="run")
+    depends_on("perl-html-treebuilder", type="run")
+    depends_on("perl-data-dumper", type="run")

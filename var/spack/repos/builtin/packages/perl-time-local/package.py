@@ -6,14 +6,14 @@ from spack.package import *
 
 
 class PerlTimeLocal(PerlPackage):
-    """Efficiently compute time from local and GMT time."""  # AUTO-CPAN2Spack
+    """Efficiently compute time from local and GMT time."""
 
-    homepage = "http://metacpan.org/release/Time-Local"  # AUTO-CPAN2Spack
+    homepage = "http://metacpan.org/release/Time-Local"
     url = "https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Time-Local-1.30.tar.gz"
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("gartung", "greenc-FNAL", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel")
 
     version(
         "1.31-TRIAL", sha256="c5acfe5de04af6ebb69dd8dec17788594e32053c8b8f7e4c43f823019cd72f83"
@@ -29,4 +29,4 @@ class PerlTimeLocal(PerlPackage):
     version("1.28", sha256="9278b9e5cc99dcbb0fd27a43e914828b59685601edae082889b5ee7266afe10e")
     version("1.27", sha256="926b6b270209d508226b4f0e24d0e13c12cb94b81479e100d796beb45f9bcc1e")
 
-    depends_on("perl-extutils-makemaker", type=("build", "test"))  # AUTO-CPAN2Spack
+    depends_on("perl-extutils-makemaker", type=("build", "test"))

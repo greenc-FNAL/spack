@@ -6,14 +6,14 @@ from spack.package import *
 
 
 class PerlPpixUtilities(PerlPackage):
-    """Extensions to PPI."""  # AUTO-CPAN2Spack
+    """Extensions to PPI."""
 
-    homepage = "https://cpan.metacpan.org/authors/id/E/EL/ELLIOTJS"  # AUTO-CPAN2Spack
+    homepage = "https://cpan.metacpan.org/authors/id/E/EL/ELLIOTJS"
     url = "https://cpan.metacpan.org/authors/id/E/EL/ELLIOTJS/PPIx-Utilities-1.001000.tar.gz"
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("gartung", "greenc-FNAL", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel")
 
     version(
         "1.001.000",
@@ -29,18 +29,18 @@ class PerlPpixUtilities(PerlPackage):
 
     depends_on("perl-module-build", type="build")
 
-    provides("perl-ppix-utilities-exception-bug")  # AUTO-CPAN2Spack
-    provides("perl-ppix-utilities-node")  # AUTO-CPAN2Spack
-    provides("perl-ppix-utilities-statement")  # AUTO-CPAN2Spack
-    depends_on("perl-readonly", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-ppi-document-fragment@1.208:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-readonly-xs", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-ppi@1.208:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-task-weaken", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-exception-class", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-test-deep", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-ppi-dumper@1.208:", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-module-build@0.36:", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-ppi-document@1.208:", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-data-dumper", type="build")  # AUTO-CPAN2Spack
+    provides("perl-ppix-utilities-exception-bug")
+    provides("perl-ppix-utilities-node")
+    provides("perl-ppix-utilities-statement")
+    depends_on("perl-readonly", type="run")
+    depends_on("perl-ppi-document-fragment@1.208:", type="run")
+    depends_on("perl-readonly-xs", type="run")
+    depends_on("perl-ppi@1.208:", type="run")
+    depends_on("perl-task-weaken", type="run")
+    depends_on("perl-exception-class", type="run")
+    depends_on("perl-test-deep", type="build")
+    depends_on("perl-ppi-dumper@1.208:", type="build")
+    depends_on("perl-module-build@0.36:", type="build")
+    depends_on("perl-scalar-util", type="run")
+    depends_on("perl-ppi-document@1.208:", type="build")
+    depends_on("perl-data-dumper", type="build")

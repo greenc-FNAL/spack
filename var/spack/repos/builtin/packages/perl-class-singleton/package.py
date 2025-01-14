@@ -11,7 +11,7 @@ class PerlClassSingleton(PerlPackage):
     homepage = "https://metacpan.org/pod/Class::Singleton"
     url = "https://cpan.metacpan.org/authors/id/S/SH/SHAY/Class-Singleton-1.6.tar.gz"
 
-    maintainers("greenc-FNAL", "EbiArnie", "gartung", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("greenc-FNAL", "EbiArnie", "gartung", "marcmengel")
 
     license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 

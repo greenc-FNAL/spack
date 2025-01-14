@@ -6,14 +6,14 @@ from spack.package import *
 
 
 class PerlHttpTinyMech(PerlPackage):
-    """Wrap a WWW::Mechanize instance in an HTTP::Tiny compatible interface.."""  # AUTO-CPAN2Spack
+    """Wrap a WWW::Mechanize instance in an HTTP::Tiny compatible interface.."""
 
-    homepage = "https://github.com/kentnl/HTTP-Tiny-Mech"  # AUTO-CPAN2Spack
+    homepage = "https://github.com/kentnl/HTTP-Tiny-Mech"
     url = "https://cpan.metacpan.org/authors/id/K/KE/KENTNL/HTTP-Tiny-Mech-1.001002.tar.gz"
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("gartung", "greenc-FNAL", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel")
 
     version(
         "1.001.002",
@@ -26,9 +26,9 @@ class PerlHttpTinyMech(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/K/KE/KENTNL/HTTP-Tiny-Mech-1.001001.tar.gz",
     )
 
-    depends_on("perl@5.6:", type=("build", "run", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-http-response", type="test")  # AUTO-CPAN2Spack
-    depends_on("perl-www-mechanize", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker@7.0:", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-http-request", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-http-tiny@0.22:", type=("run", "test"))  # AUTO-CPAN2Spack
+    depends_on("perl@5.6:", type=("build", "run", "test"))
+    depends_on("perl-http-response", type="test")
+    depends_on("perl-www-mechanize", type="run")
+    depends_on("perl-extutils-makemaker@7.0:", type=("build", "test"))
+    depends_on("perl-http-request", type="run")
+    depends_on("perl-http-tiny@0.22:", type=("run", "test"))

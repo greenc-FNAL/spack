@@ -6,14 +6,14 @@ from spack.package import *
 
 
 class PerlIoCompressBrotli(PerlPackage):
-    """Read/write Brotli buffers/streams."""  # AUTO-CPAN2Spack
+    """Read/write Brotli buffers/streams."""
 
-    homepage = "https://cpan.metacpan.org/authors/id/M/MG/MGV"  # AUTO-CPAN2Spack
+    homepage = "https://cpan.metacpan.org/authors/id/M/MG/MGV"
     url = "https://cpan.metacpan.org/authors/id/M/MG/MGV/IO-Compress-Brotli-0.004001.tar.gz"
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("gartung", "greenc-FNAL", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel")
 
     version("0.004_002", sha256="2a85869eb41045dbd5318f56f470d0931235efa19d5b7c253c7d145a70381ec0")
     version(
@@ -22,8 +22,8 @@ class PerlIoCompressBrotli(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/M/MG/MGV/IO-Compress-Brotli-0.004001.tar.gz",
     )
 
-    provides("perl-io-uncompress-brotli")  # AUTO-CPAN2Spack
-    depends_on("perl@5.14.0:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-time-hires", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-file-slurper", type="run")  # AUTO-CPAN2Spack
+    provides("perl-io-uncompress-brotli")
+    depends_on("perl@5.14.0:", type="run")
+    depends_on("perl-time-hires", type="run")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-file-slurper", type="run")

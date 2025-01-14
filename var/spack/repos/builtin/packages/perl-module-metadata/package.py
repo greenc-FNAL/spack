@@ -6,14 +6,14 @@ from spack.package import *
 
 
 class PerlModuleMetadata(PerlPackage):
-    """Gather package and POD information from perl module files."""  # AUTO-CPAN2Spack
+    """Gather package and POD information from perl module files."""
 
-    homepage = "https://github.com/Perl-Toolchain-Gang/Module-Metadata"  # AUTO-CPAN2Spack
+    homepage = "https://github.com/Perl-Toolchain-Gang/Module-Metadata"
     url = "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Module-Metadata-1.000037.tar.gz"
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("gartung", "greenc-FNAL", "marcmengel")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel")
 
     version(
         "1.000.037",
@@ -26,5 +26,5 @@ class PerlModuleMetadata(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/E/ET/ETHER/Module-Metadata-1.000036.tar.gz",
     )
 
-    depends_on("perl@5.6:", type=("build", "run", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type=("build", "test"))  # AUTO-CPAN2Spack
+    depends_on("perl@5.6:", type=("build", "run", "test"))
+    depends_on("perl-extutils-makemaker", type=("build", "test"))
