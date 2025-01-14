@@ -25,9 +25,7 @@ class PerlPerlCriticMore(PerlPackage):
     provides("perl-perl-critic-policy-errorhandling-requireuseofexceptions")
     provides("perl-perl-critic-policy-modules-perlminimumversion")
     provides("perl-perl-critic-policy-modules-requireperlversion")
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-requireconstantonleftsideofequality"
-    )
+    provides("perl-perl-critic-policy-valuesandexpressions-requireconstantonleftsideofequality")
     provides("perl-perl-critic-policy-valuesandexpressions-restrictlongstrings")
     depends_on("perl-readonly@1.3:", type="run")
     depends_on("perl-module-build@0.4:", type="build")

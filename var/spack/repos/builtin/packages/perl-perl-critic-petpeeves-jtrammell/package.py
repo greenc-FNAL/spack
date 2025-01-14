@@ -20,9 +20,7 @@ class PerlPerlCriticPetpeevesJtrammell(PerlPackage):
     version("0.04", sha256="fb931eb3434b6b75339d079a469f7a389269df155f46ee5e7cc60c2ebbae4a04")
     version("0.03", sha256="756671be54d026aa018527285d32205c83080fe32d0d60bb947c254455a46e18")
 
-    provides(
-        "perl-perl-critic-policy-variables-prohibituselessinitialization@0.02"
-    )
+    provides("perl-perl-critic-policy-variables-prohibituselessinitialization@0.02")
     depends_on("perl-module-build@0.35:", type="build")
     depends_on("perl-perl-critic-policy", type="run")
     depends_on("perl-perl-critic-utils", type="run")

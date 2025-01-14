@@ -20,18 +20,10 @@ class PerlPerlCriticStrictersubs(PerlPackage):
     depends_on("perl-module-build", type="build")
 
     provides("perl-perl-critic-policy-modules-requireexplicitinclusion")
-    provides(
-        "perl-perl-critic-policy-subroutines-prohibitcallstoundeclaredsubs"
-    )
-    provides(
-        "perl-perl-critic-policy-subroutines-prohibitcallstounexportedsubs"
-    )
-    provides(
-        "perl-perl-critic-policy-subroutines-prohibitexportingundeclaredsubs"
-    )
-    provides(
-        "perl-perl-critic-policy-subroutines-prohibitqualifiedsubdeclarations"
-    )
+    provides("perl-perl-critic-policy-subroutines-prohibitcallstoundeclaredsubs")
+    provides("perl-perl-critic-policy-subroutines-prohibitcallstounexportedsubs")
+    provides("perl-perl-critic-policy-subroutines-prohibitexportingundeclaredsubs")
+    provides("perl-perl-critic-policy-subroutines-prohibitqualifiedsubdeclarations")
     provides("perl-perl-critic-strictersubs-utils")
     depends_on("perl-file-pathlist", type="run")
     depends_on("perl@5.6.1:", type="run")

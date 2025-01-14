@@ -30,9 +30,7 @@ class PerlPerlCriticPulp(PerlPackage):
     provides("perl-perl-critic-policy-compatibility-podminimumversion")
     provides("perl-perl-critic-policy-compatibility-prohibitunixdevnull")
     provides("perl-perl-critic-policy-documentation-prohibitadjacentlinks")
-    provides(
-        "perl-perl-critic-policy-documentation-prohibitadjacentlinks-parser"
-    )
+    provides("perl-perl-critic-policy-documentation-prohibitadjacentlinks-parser")
     provides("perl-perl-critic-policy-documentation-prohibitbadaproposmarkup")
     provides("perl-perl-critic-policy-documentation-prohibitduplicateheadings")
     provides("perl-perl-critic-policy-documentation-prohibitduplicateseealso")
@@ -52,29 +50,15 @@ class PerlPerlCriticPulp(PerlPackage):
     provides("perl-perl-critic-policy-modules-prohibitusequotedversion")
     provides("perl-perl-critic-policy-valuesandexpressions-constantbeforelt")
     provides("perl-perl-critic-policy-valuesandexpressions-notwithcompare")
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-prohibitarrayassignaref"
-    )
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-prohibitbareworddoublecolon"
-    )
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-prohibitduplicatehashkeys"
-    )
+    provides("perl-perl-critic-policy-valuesandexpressions-prohibitarrayassignaref")
+    provides("perl-perl-critic-policy-valuesandexpressions-prohibitbareworddoublecolon")
+    provides("perl-perl-critic-policy-valuesandexpressions-prohibitduplicatehashkeys")
     provides("perl-perl-critic-policy-valuesandexpressions-prohibitemptycommas")
     provides("perl-perl-critic-policy-valuesandexpressions-prohibitfiletest-f")
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-prohibitnullstatements"
-    )
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-prohibitunknownbackslash"
-    )
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-requirenumericversion"
-    )
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-unexpandedspecialliteral"
-    )
+    provides("perl-perl-critic-policy-valuesandexpressions-prohibitnullstatements")
+    provides("perl-perl-critic-policy-valuesandexpressions-prohibitunknownbackslash")
+    provides("perl-perl-critic-policy-valuesandexpressions-requirenumericversion")
+    provides("perl-perl-critic-policy-valuesandexpressions-unexpandedspecialliteral")
     provides("perl-perl-critic-pulp-podminimumversionviolation")
     provides("perl-perl-critic-pulp-podparser")
     provides("perl-perl-critic-pulp-podparser-prohibitbadaproposmarkup")

@@ -17,7 +17,5 @@ class PerlPerlCriticNits(PerlPackage):
 
     version("1.0.0", sha256="92fc3635711e48981240d5c5c4205377f89a46bbbe86eb8d79a26f2744d7450f")
 
-    provides(
-        "perl-perl-critic-policy-valuesandexpressions-prohibitaccessofprivatedata"
-    )
+    provides("perl-perl-critic-policy-valuesandexpressions-prohibitaccessofprivatedata")
     depends_on("perl-perl-critic@1.7:", type="run")
