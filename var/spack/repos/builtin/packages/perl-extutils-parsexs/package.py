@@ -13,7 +13,7 @@ class PerlExtutilsParsexs(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("3.44", sha256="77effdf31af36ef656f09aa7c15356d238dab6d1afaa7278ae15c1b6bcf86266")
 

@@ -13,7 +13,7 @@ class PerlCpanMetaYaml(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.018", sha256="33caf7c94cde58abdbd370a5ae7149635d4085c643d4838aa0ada97568821294")
 

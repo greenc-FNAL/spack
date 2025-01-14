@@ -13,7 +13,7 @@ class PerlUnicodeUtf8(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.62", sha256="fa8722d0b74696e332fddd442994436ea93d3bfc7982d4babdcedfddd657d0f6")
     version("0.61", sha256="5ee155a8af856ac9b24819cf153592a13338651440478cb1dbf0e7f8e566676f")

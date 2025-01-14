@@ -13,7 +13,7 @@ class PerlTextTestbase(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.13", sha256="25a512d6f64099607bef799a58516524fdbe6e9a458959a4747c4d7443c4d2fa")
     version("0.12", sha256="5348ffed8238a19f731e91b0c553c474b62e1d81ed887471be99e0b0b1bc801e")

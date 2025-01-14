@@ -13,7 +13,7 @@ class PerlAppPmuninstall(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.33", sha256="f05a12435124046a2a45bce49f283216797e71fe1b129bcf43b3f04887c89aff")
     version("0.32", sha256="ebc4f6cb4c9fd9ceee0d2d83b1d54d61fd2ccb43a624a86fcc6dcd51e922132d")

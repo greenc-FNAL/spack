@@ -13,7 +13,7 @@ class PerlDevelCaller(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("2.06", sha256="6a73ae6a292834255b90da9409205425305fcfe994b148dcb6d2d6ef628db7df")
     version("2.05", sha256="dcfb590044277e125e78f781a150198a94c89769af6faab8f544a916dfbb4388")

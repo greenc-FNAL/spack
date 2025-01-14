@@ -13,7 +13,7 @@ class PerlFileFindRulePerl(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.16", sha256="ae1886050d9ca21223c073e2870abdc80dc30e3f55289a11c37da3820a8321ff")
     version("1.15", sha256="9a48433f86e08ce18e03526e2982de52162eb909d19735460f07eefcaf463ea6")

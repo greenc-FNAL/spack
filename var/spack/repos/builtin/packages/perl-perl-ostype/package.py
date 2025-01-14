@@ -13,7 +13,7 @@ class PerlPerlOstype(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.010", sha256="e7ed4994b5d547cb23aadb84dc6044c5eb085d5a67a6c5624f42542edd3403b2")
     version("1.009", sha256="245cf4c9f7614ac5e5c3bc82621fa2ab4f3c25e0aaae3016b7eed5d40ddcae06")

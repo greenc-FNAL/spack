@@ -13,7 +13,7 @@ class PerlHashFieldhash(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.15", sha256="5c515707a5433796a5697b118ddbf1f216d13c5cd52f2b64292e76f7d9b7e8f1")
     version("0.14", sha256="e1f7d0e97dd14afb2dddf64052e503c05467f73f51756ea7b647d59cab0cf721")

@@ -13,7 +13,7 @@ class PerlIoSocketIp(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.41", sha256="849a45a238f8392588b97722c850382c4e6d157cd08a822ddcb9073c73bf1446")
     version("0.40", sha256="db50cc58f02c63edec35ecfd27818312fdb6e3de6ba7de338197500e26b9fa30")

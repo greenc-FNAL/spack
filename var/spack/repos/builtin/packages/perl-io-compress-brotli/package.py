@@ -13,7 +13,7 @@ class PerlIoCompressBrotli(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.004_002", sha256="2a85869eb41045dbd5318f56f470d0931235efa19d5b7c253c7d145a70381ec0")
     version(

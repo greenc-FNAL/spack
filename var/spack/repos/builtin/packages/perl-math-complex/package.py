@@ -13,7 +13,7 @@ class PerlMathComplex(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.59", sha256="f35eb4987512c51d2c47294a008ede210d8dd759b90b887d04847c69b42dd6d1")
     version("1.58", sha256="304511599eb997fde7e21f7ea4105f0882f7cddb94537f56d2a46d618a8bb3d8")

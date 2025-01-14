@@ -13,7 +13,7 @@ class PerlDevelLexalias(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.05", sha256="5e0ad9d43e266033856e424e104a0009f8e63449e40cd5aba59ad94cb1bcee72")
     version("0.04", sha256="f610bbabc530d3771192d9a2feb31c90dea891c1cc0bd5d3c5ccd1e324cd639c")

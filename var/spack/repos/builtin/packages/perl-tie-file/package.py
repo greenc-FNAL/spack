@@ -13,7 +13,7 @@ class PerlTieFile(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-2.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.05", sha256="8a980b577ff4b10fe11062ed8c774857fa8c9833c5305f2e8bfb3347af63f139")
     version("1.04", sha256="a3ead2905587e532b9b40094d1dcfcfcc895b01c57b551d9a91bdce450cc4361")

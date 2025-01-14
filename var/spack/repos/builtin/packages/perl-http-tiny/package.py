@@ -10,7 +10,7 @@ class PerlHttpTiny(PerlPackage):
     homepage = "https://github.com/Perl-Toolchain-Gang/HTTP-Tiny"
     url = "https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/HTTP-Tiny-0.088.tar.gz"
 
-    maintainers("chissg", "gartung", "marcmengel", "teaguesterling", "vitodb")
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "teaguesterling", "vitodb")
 
     # Stated: same as perl5
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="teaguesterling")

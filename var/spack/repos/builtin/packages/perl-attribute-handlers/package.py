@@ -13,7 +13,7 @@ class PerlAttributeHandlers(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.99", sha256="937ea3ebfc9b14f4a4148bf3c32803709edbd12a387137a26370b38ee1fc9835")
     version("0.98", sha256="7d53613496faf6f25c41dfb870b3aca197ed7208252b6b4fd7a39a57511d401a")

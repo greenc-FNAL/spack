@@ -13,7 +13,7 @@ class PerlPodMinimumversion(PerlPackage):
 
     license("GPL-3.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("50", sha256="0bd2812d9aacbd99bb71fa103a4bb129e955c138ba7598734207dc9fb67b5a6f")
     version("49", sha256="6226fc64d8c776c1025e6d074d811732b64ae6dba22c00bf1f4eaac05b23c8d7")

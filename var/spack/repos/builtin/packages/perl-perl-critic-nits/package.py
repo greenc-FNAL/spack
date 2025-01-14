@@ -13,7 +13,7 @@ class PerlPerlCriticNits(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.0.0", sha256="92fc3635711e48981240d5c5c4205377f89a46bbbe86eb8d79a26f2744d7450f")
 

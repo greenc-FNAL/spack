@@ -13,7 +13,7 @@ class PerlTestPerlCriticProgressive(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.03", sha256="665d717b4a4c35077b703115090aaa64f24ae12c6193674c8a096f031bc15b36")
     version("0.02", sha256="be23f3d422aa02dff48fbb18201e8c1c48d7e32ec2e11020c4c069d39e857141")

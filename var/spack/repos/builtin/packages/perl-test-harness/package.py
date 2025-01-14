@@ -13,7 +13,7 @@ class PerlTestHarness(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("3.44", sha256="7eb591ea6b499ece6745ff3e80e60cee669f0037f9ccbc4e4511425f593e5297")
     version("3.43_06", sha256="14fdd5b127d64fdc73c1e39c6bdc568370a4773698eaf299ed7c7ab933f75535")

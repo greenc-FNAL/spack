@@ -13,7 +13,7 @@ class PerlCpanDistnameinfo(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.12", sha256="2f24fbe9f7eeacbc269d35fc61618322fc17be499ee0cd9018f370934a9f2435")
     version("0.11", sha256="8796af6350a8113451a6f6459d2cd31fdb859f9f3784a5bb568e628c8b5e92ea")

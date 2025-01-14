@@ -13,7 +13,7 @@ class PerlPerlCriticPulp(PerlPackage):
 
     license("GPL-3.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("99", sha256="b8fda842fcbed74d210257c0a284b6dc7b1d0554a47a3de5d97e7d542e23e7fe")
     version("98", sha256="476f00aea58ca8a10a09ff709e90506ddb70ae35f6574ae184e08eb944413da0")

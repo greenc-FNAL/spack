@@ -13,7 +13,7 @@ class PerlClassAccessorLite(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.08", sha256="75b3b8ec8efe687677b63f0a10eef966e01f60735c56656ce75cbb44caba335a")
     version("0.07", sha256="a8aaaaf32a64e9ff89dbc4ef8a55d6197f5c161b8fc8d64219eef9ea173971d1")

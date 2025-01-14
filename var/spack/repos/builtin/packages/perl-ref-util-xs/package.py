@@ -13,7 +13,7 @@ class PerlRefUtilXs(PerlPackage):
 
     license("MIT", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.117", sha256="fb64c5a823787f6600257918febd9fbc6f0305936fc3287b81a30c099b65633c")
     version("0.116", sha256="cee4aa858f89a667f202c702d87c8c6e5d837341e64cd91cda94c570dafaad50")

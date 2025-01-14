@@ -13,7 +13,7 @@ class PerlPerlCriticStorable(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.01", sha256="11d1a5417b60c09c78ecb187cea84a95daf5fd47aa44810fa6ceff1879b1ad61")
 

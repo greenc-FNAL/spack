@@ -13,7 +13,7 @@ class PerlPerlCriticTics(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.009", sha256="7542662b56622f5d646b00068c8f9befbc16e462228a0cd47d54549d24eb7493")
     version("0.008", sha256="26bfa6dff571061c71e9914a71d90ae02e661bfac0943cf60ae5085c86766999")

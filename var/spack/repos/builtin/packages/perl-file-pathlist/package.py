@@ -13,7 +13,7 @@ class PerlFilePathlist(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.04", sha256="e3e2799f3bceeae4992fe31ea892c34e9141f9237598cfadbc89824ede7a662c")
     version("0.03", sha256="468c89cac5629092a3665378c89ed6f9363dbe046c537fc98d4837c221b6f80b")

@@ -13,7 +13,7 @@ class PerlPerlCriticStrictersubs(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.06", sha256="bdf438b7b29c6699fbdea317400ae4b8d28a2078b21c51c9afe8e06c96c9ca77")
 

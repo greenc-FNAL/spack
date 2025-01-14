@@ -13,7 +13,7 @@ class PerlTestMockrandom(PerlPackage):
 
     license("Apache-2.0", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.01", sha256="2614930d84fc5deac39afbc1ee86ccd39b221507f27d4ee493ca26e5c921cce0")
     version("1.00", sha256="630bca40269d04520e39bb6579eb0399684cb17728702336ed1eb1542b7c2f97")

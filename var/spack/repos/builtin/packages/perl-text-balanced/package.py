@@ -13,7 +13,7 @@ class PerlTextBalanced(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("2.06", sha256="773e0f0f21c0cb2cf664cee6ba28ff70259babcc892f9b650f9cbda00be092ad")
     version("2.05", sha256="3a6f3fbcc6cb5406964b2e332688bae3c2595436d03ddb25ee6703a47a98977d")

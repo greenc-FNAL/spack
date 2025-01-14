@@ -13,7 +13,7 @@ class PerlTimeLocal(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version(
         "1.31-TRIAL", sha256="c5acfe5de04af6ebb69dd8dec17788594e32053c8b8f7e4c43f823019cd72f83"

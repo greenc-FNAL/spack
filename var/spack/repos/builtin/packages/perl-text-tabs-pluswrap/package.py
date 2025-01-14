@@ -13,7 +13,7 @@ class PerlTextTabsPluswrap(PerlPackage):
 
     license("Unknown", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("2021.0814", sha256="30bbea13a5f5ef446b676b4493644df0ea19fc6a70ff649a8beb64571dbf6dfa")
 

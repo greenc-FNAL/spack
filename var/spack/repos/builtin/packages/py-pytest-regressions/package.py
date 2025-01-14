@@ -13,7 +13,7 @@ class PyPytestRegressions(PythonPackage):
 
     license("MIT", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")
 
     version("2.3.1", sha256="b3ec4cdb34e8f627606275d8b834c65e60e1a3073e326bb3727a427273d0221d")
 

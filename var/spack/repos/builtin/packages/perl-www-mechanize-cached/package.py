@@ -13,7 +13,7 @@ class PerlWwwMechanizeCached(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.56", sha256="a18b0706aac202604adc575b6be6b8ae26b373a9d43d8da59c826d7d300151dd")
     version("1.55", sha256="3ab16463beede3061db7b7d3c66ea9536f02b737467cc6b1172aa08302d9fb60")

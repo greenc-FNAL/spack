@@ -13,7 +13,7 @@ class PerlLibnet(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("3.14", sha256="153c8eb8ef0f19cf2c631d5b45d05de98516937f34e261125ef242fba1fe2ea4")
     version("3.13", sha256="5a35fb1f2d4aa291680eb1af38899fab453c22c28e71f7c7bd3747b5a3db348c")

@@ -18,7 +18,7 @@ class PerlMozillaPublicsuffix(PerlPackage):
 
     license("MIT", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.0.6", sha256="a3bc115d6a59fb7bf23b539fb7b95e4ee06850fab884e2d12dd98dc545f9ebd8")
     version("1.0.5", sha256="2750fca9335025eaf228a69952dd41a5d361a06b6baca7169865f8de510f3848")

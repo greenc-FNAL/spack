@@ -13,7 +13,7 @@ class PerlRegexpUtil(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("0.005", sha256="a08871fca2054c464ec6cd663fbdb2fce99cc0346256acf0a4936681ed8a0e00")
     version("0.004", sha256="21f34ef3d445c20695ae35302167cc1db709ac697591eb17140635400c8901ee")

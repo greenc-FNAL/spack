@@ -13,7 +13,7 @@ class PerlTestTaint(PerlPackage):
 
     license("Artistic-1.0-Perl OR GPL-1.0-or-later", checked_by="greenc-FNAL")
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("gartung", "greenc-FNAL", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
 
     version("1.08", sha256="5d594d4257352c93785024c63aa0a7b73d912ceca9611cd975ce83aab021a97d")
     version("1.06", sha256="721b51ca91d248ea5ff4f99ca49c05a080e6f0fc9f7983e96121b7775ab93107")
